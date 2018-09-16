@@ -1,5 +1,5 @@
 #! python3
-# -*- coding: encoding -*-
+# -*- coding: utf-8 -*-
 import sys
 
 if len(sys.argv) >1 :
