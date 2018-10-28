@@ -1,0 +1,31 @@
+In [1]: import numpy as np # NumPyモジュールをインポート
+
+In [2]: a = np.array([1,2,3]) # ndarrayインスタンスを生成。
+
+In [3]: type(a) # クラスを確認
+Out[3]: numpy.ndarray
+
+In [4]: b = np.array([[1,2,3], [4,5,6]]) # これで2-dimensional array(2次元配列)
+
+In [5]: a
+Out[5]: array([1, 2, 3])
+
+In [6]: b # 各々表示させるとこんな感じ。
+Out[6]:
+array([[1, 2, 3],
+       [4, 5, 6]])
+
+In [7]: b.T # 転置
+Out[7]:
+array([[1, 4],
+       [2, 5],
+       [3, 6]])
+
+In [8]: a.T # a.ndim < 2なので変化なし。
+Out[8]: array([1, 2, 3])
+
+In [9]: a.data # メモリの位置を示す。
+Out[9]: <memory at 0x106f54888>
+
+In [10]: a.dtype # データ型
+Out[10]: dtype('int64')

@@ -43,10 +43,25 @@ print("Copied List:" + str(newSqu))
 #len関数で要素数を取得可能。
 print("Original List len:" + str(len(squares)))
 
-#入れ子も可能。
+#入れ子も可能。多次元配列。
 listlist = [[1,3,5],['a','b','c']]
 print("[0][1] :" + str(listlist[0][1]))
 print("[1][2] :" + str(listlist[1][2]))
+
+#これは面白い。
+#for文でリスト作成が可能。
+# i * 2 を配列要素として返却する。これをrange(10)で10回繰り返す。
+numbers = [i * 2 for i in range(10)]
+print(numbers)
+print(len(numbers))
+
+#読みにくいが以下の通り
+#  [1 for i in range(3)] で値が1の要素を3つ持つリストを作成
+#   上記をrange(4)で4回繰り返す。
+#   [1,1,1]のリストが４個入った２次元配列が完成。
+numbers2 = [[1 for i in range(3)] for j in range(4)]
+numbers2[0][1] = 2
+print(numbers2)
 
 
 
