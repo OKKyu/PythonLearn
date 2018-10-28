@@ -1,59 +1,60 @@
 #! python3
 # -*- coding: UTF-8 -*-
-# �^�̊�{
+# 型の基本
 import sys
 
-#int��float�ADecimal�AFraction�Ȃǂ��T�|�[�g�B�r���g�C���ł͕��f���⋕����������Bj or J�ŋ����������B
-#int�^���
+#intとfloat、Decimal、Fractionなどをサポート。ビルトインでは複素数や虚数も扱える。j or Jで虚部を示す。
+#int型代入
 num = 30
 print("num(int) " + str(num))
 
-#float�^���
+#float型代入
 num = 30.6
 print("num(float)" + str(num))
 
-#int�^���
+#int型代入
 num = 22
 print("num(int)" + str(num))
 
-#string�^���  JavaScript�̂悤�ɁA�ϐ��̌^�͌Œ肳��Ȃ��悤�ł���B
+#string型代入  JavaScriptのように、変数の型は固定されないようである。
 num = "121"
 print("num(String)" + str(num))
 
-#string�^���  �G�X�P�[�v�ɂ�\���g���B
+#string型代入  エスケープには¥を使う。
 st = '"Isn\'t," she said.'
 print("st " + st)
 
-#����������̘A�� () �ł�����A�C�ӂ̈ʒu�ŕ����̃N�H�[�e�[�V�������g���B
+#長い文字列の連結 () でくくり、任意の位置で複数のクォーテーションを使う。
 text = ('very long,long,long,long,long,long,long,long,long'
         ',long,long,long,long,long,long,time,agooooooo.......')
 print(text)
 
-#�ϐ��ǂ����̘A�� Java�Ɠ����� + ���g���B
+#変数どうしの連結 Javaと同じく + を使う。
 text = text + 'very Evils man, Rorun Harlshead, is exist.'
 print(text)
 
-#������̓C���f�b�N�X�w�肵�Ĉꕔ�؂�o�����\�B
-#char�ɕϊ����Ȃ��ł������Asubstring���v��Ȃ������B����͂���y�B
-#������1�`4�����؂�o��
+#文字列はインデックス指定して一部切り出しも可能。
+#charに変換しないでいいし、substringも要らなさそう。これはお手軽。
+#左から1〜4文字切り出し
 print('index 1 4  ' + text[0] + text[1] + text[2] + text[3])
 
-#�E����1�`4�����؂�o��
-#-0�͂Ȃ����߁A�E����؂�o���ꍇ��1�J�n�ƂȂ�B
+#右から1〜4文字切り出し
+#-0はないため、右から切り出す場合は1開始となる。
 print("index -1 -4  " + text[-1] + text[-2] + text[-3] + text[-4])
 
-#��̂悤�Ȑ؂�o�����������Ƃ��X���C�X���T�|�[�g����Ă���B
+#上のような切り出し方をせずともスライスもサポートされている。
 print('index 1 4  ' + text[0:4])
 
-#�ŏ��̃C���f�b�N�X���ȗ�����ƁA0 �ƌ��Ȃ���܂��B��Ԃ� �̃C���f�b�N�X���ȗ�����ƁA�X���C�X���镶����̃T�C�Y�Ƃ݂Ȃ���܂��B
+#最初のインデックスを省略すると、0 と見なされます。二番め のインデックスを省略すると、スライスする文字列のサイズとみなされます。
 text = 'Python'
 print("text :2" + text[:2])
 print("text 2:" + text[2:])
 
-#�������immutable�B�ꕔ�������ύX���悤�Ƃ��Ă��G���[�ƂȂ�B
+#文字列はimmutable。一部文字列を変更しようとしてもエラーとなる。
 #text[:2] = 'Po'
 
-#�����񒷂�len()�Ŏ擾�\�B
+#文字列長はlen()で取得可能。
 print('length:' + str(len(text)))
 
-
+print('文字列のformat関数で{インデックス}の置換ができる。')
+print('{0},Python{1}!'.format('Hello',sys.version))
