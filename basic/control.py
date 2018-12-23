@@ -12,6 +12,8 @@ elif len(sys.argv) == 4 :
 else:
 	print('........')
 	
+#条件式にはand,or,notが使える。
+	
 #print('for文の例')
 #要素を順番どおりに出力する
 words = ['cat','window','defensestrate']

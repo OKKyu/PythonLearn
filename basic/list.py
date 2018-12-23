@@ -63,6 +63,8 @@ numbers2 = [[1 for i in range(3)] for j in range(4)]
 numbers2[0][1] = 2
 print(numbers2)
 
-
-
-
+#リストから各変数への代入ができる。これは便利そう。
+number3 =  [i for i in range(3) ]
+number3_0, number3_1, number3_2 = number3
+print(number3)
+print(str(number3_0) + " " + str(number3_1) + " " + str(number3_2))
