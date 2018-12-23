@@ -58,3 +58,45 @@ print('length:' + str(len(text)))
 
 print('文字列のformat関数で{インデックス}の置換ができる。')
 print('{0},Python{1}!'.format('Hello',sys.version))
+
+print('これは便利。文字列の部分一致が簡単に調べられる。ただし真偽値で結果を返す。')
+print(' 探したい文字 in 対象文字列')
+print('お' in 'あいうえお')
+
+print('split関数あり。')
+print('あいうえ,おかき'.split(','))
+
+print('splitの逆でjoin関数というのがある。指定した区切り文字で文字列を連結する。リストの要素を１個の文字列に連結したいときに使える。')
+print('-'.join(['あいうえ','おかき']))
+
+print('文字列置換、replaceもある。')
+print('あいうえ-おかき'.replace('-',''))
+
+#型判定の方法。
+#組み込み関数typeとisinstanceがある。
+#typeの場合
+print(type('string'))
+# <class 'str'>と出る
+
+print(type(100))
+# <class 'int'>と出る
+
+print(type([0, 1, 2]))
+# <class 'list'>と出る
+
+#type()の返り値と任意の型を比較することで、そのオブジェクトが任意の型であるかを判定できる。
+print(type('string') is str)
+
+
+#isinstanceの場合
+#isinstance(object, class)は、第一引数のオブジェクトが、第二引数の型のインスタンス、またはサブクラスのインスタンスであればTrueを返す関数。
+#typeではサブクラスまでは判定しない。
+print(isinstance('string', str))
+
+#第二引数には型のタプルを指定することも可能。いずれかの型のインスタンスであればTrueを返す。
+#いちいち if ... instanceof ... or ... instanceof ... と繰り返さないでもできる。
+print(isinstance(100, (int, str)))
+
+
+
+
