@@ -1,0 +1,16 @@
+#! python3
+# -*- coding:utf-8 -*-
+#This contents by bellow site
+#https://ensekitt.hatenablog.com/entry/2018/01/16/200000
+
+#need packages
+#sudo apt install python-xlib scrot
+#pip install Xlib
+#pip install pyautogui
+
+import pyautogui
+import time
+for i in range(10):
+    s = pyautogui.screenshot()
+    s.save('filename_{0:04d}.png'.format(i))
+    time.sleep(3)

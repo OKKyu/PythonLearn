@@ -1,0 +1,16 @@
+#! python3
+# -*- coding:utf-8 -*-
+#This contents by bellow site
+#https://qiita.com/koara-local/items/6a98298d793f22cf2e36
+#ショック！ ImageGrabはwinもしくはmacしか使用できない、という例外がスローされて終了。
+
+from PIL import ImageGrab
+
+saveDir = "/home/puppy/pic"
+
+# full screen
+ImageGrab.grab().save(saveDir + "PIL_capture.png")
+
+# 指定した領域内をクリッピング
+ImageGrab.grab(bbox=(100, 100, 200, 200)).save(saveDir + "PIL_capture_clip.png")
+

@@ -1,0 +1,35 @@
+#! python3
+# -*- coding:utf-8 -*-
+#This contents by bellow site
+#https://note.nkmk.me/python-pillow-basic/
+
+from PIL import Image, ImageFilter
+im = Image.open("/home/puppy/pic/Dornuts001.jpg")
+
+#filetype
+print(im.format)
+
+#width and height
+print(im.size)
+
+#color mode
+print(im.mode)
+
+#RGB各色の最小値と最大値 R,G,B ?
+print(im.getextrema())
+
+#指定した座標の色を取得。座標の原点(0, 0)は左上。
+print(im.getpixel((256, 256)))
+
+#白黒変換（convert('L')）、90度回転（rotate(90)）、ガウシアンブラー（filter()）の処理を行う。
+new_im = im.convert('L').rotate(90).filter(ImageFilter.GaussianBlur())
+
+#OSデフォルトのソフトで画像を表示。
+new_im.show()
+
+#save picture
+new_im.save('/home/puppy/pic/pillowBasic001.jpg', quality=95)
+
+#all fields name and variables name
+#for x in dir(im):
+#    print(x)
