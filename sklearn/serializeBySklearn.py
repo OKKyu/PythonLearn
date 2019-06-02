@@ -8,8 +8,11 @@ from sklearn.externals import joblib
 #load training data
 digits = load_digits()
 clf = MLPClassifier(hidden_layer_sizes=(100,), max_iter=1000, tol=0.000001, random_state=None)
-
+print(digits.DESCR)
 #fit learning model
+print(digits.data)
+print(digits.target)
+
 clf.fit(digits.data, digits.target)
 pre1 = clf.predict(digits.data)
 
