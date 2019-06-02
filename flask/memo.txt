@@ -1,0 +1,44 @@
+・サーバー公開モード
+app.run(host='0.0.0.0')
+
+・デバッグモード
+app.debug = True
+app.run もしくは
+app.run(debug=True)
+
+・末尾スラッシュの有無
+有りの場合
+  @app.route('/projects/')
+  URL入力時にスラッシュを入れ忘れてもリダイレクトされる。
+
+・無しの場合
+  @app.route('/projects')
+  スラッシュを入れ忘れるとNotFoundエラーとなる。
+
+・動的URL組み込み
+  @app.route('/user/<username>')
+  def show_user_profile(username):
+      # show the user profile for that user
+      pass
+
+  コンバータ使用の場合（int,float,passの３種類。自動で型変換する、ということか。)
+  コンバータでint指定しないまま、post_idに対し四則演算などを行うとエラーになる。
+  @app.route('/post/<int:post_id>')
+  def show_post(post_id):
+      # show the post with the given id, the id is an integer
+      pass
+
+・URL埋め込み
+  url_for(メソッド名)
+  url_for(メソッド名, next=URLパラメータ) 
+  url_for(メソッド名, username='John Doe')
+  
+  これを使って動的にhtml(テンプレート)へurlを埋め込める。
+
+・httpメソッド指定
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        do_the_login()
+    else:
+        show_the_login_form()
