@@ -17,3 +17,6 @@ print('実行するとわかるが、登録順序も保証されない。ここ�
 print('集合の積も取れる。これは便利。以下はset1とset2で重複する値,bbだけが表示される。')
 set2 = {'bb'}
 print(set1 & set2)
+
+#if you want to create empty set, please use set() method.
+set3 = set()
