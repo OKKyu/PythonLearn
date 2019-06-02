@@ -22,13 +22,9 @@ class ImgExpansion():
                     imgOrigin = Image.open(str(imgName))
                     for i in range(20,360,20):
                         imgSpinned = imgOrigin.rotate(i)
-                        imgSpinned.show()
+                        #imgSpinned.show()
                         imgSpinnedName = str(imgName.stem) + "_" + str(i) + "angle" + str(imgName.suffix)
                         imgSpinned.save(str(expandDir) + '/' + imgSpinnedName)
-                    
-                        
-                    
-                
         else:
             print("no input directory")
             
