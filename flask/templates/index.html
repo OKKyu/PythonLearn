@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html lang="ja">
-    <head>
-        <meta charset="utf-8">
-        <title>Flask paiza</title>
-        <style>body {padding:10px;}</style>
-    </head>
-    <body>
+{% extends "template.html" %}
+{% block content %}
         <p>hello python</p>
         <p>hello paiza</p>
-        <p>hello! {{ name }}</p>
-                {% if aaa : %}
+        {% if name %}
+           <p>hello! {{ name }}</p>
         {% endif %}
-        {% for name in enemies: %}
+        {% for item in items  %}
+           <p>{{ item }}</p>
         {% endfor %}
-    </body>
-</html>
+{% endblock %}
