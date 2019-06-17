@@ -20,7 +20,7 @@ cv2.waitKeyEx(0)
 # bgImage,start point,end point,color(BGR),thickness
 rect = np.zeros((512,512,3), np.uint8)
 cv2.rectangle(rect,(384,0),(510,128),(0,255,0),3)
-cv2.imshow("line",rect)
+cv2.imshow("rect",rect)
 cv2.waitKeyEx(0)
 
 #put text
