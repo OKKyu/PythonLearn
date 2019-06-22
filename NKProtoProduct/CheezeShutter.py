@@ -41,9 +41,10 @@ class CheezeShutter():
                         print(startTime)
                 
                 wKey = cv2.waitKey(1)
-                if cv2.waitKey(1) & 0xff == ord('w'):
+                if wKey & 0xff == ord('w'):
                     self.__saveFile(frame)
-                if cv2.waitKey(1) & 0xff == ord('q'):
+                    time.sleep(self.__waitSeconds)
+                elif wKey & 0xff == ord('q'):
                     break
                 
         except Exception as ex:
@@ -62,7 +63,6 @@ class CheezeShutter():
                 break
                 
         cv2.imwrite(saveName + str(picNum) + '.png',frame)
-        time.sleep(self.__waitSeconds)        
 
 if __name__ == '__main__':
     chs = CheezeShutter()
