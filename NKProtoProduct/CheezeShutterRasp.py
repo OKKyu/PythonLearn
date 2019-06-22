@@ -11,6 +11,7 @@ class CheezeShutter():
     __waitSeconds = 1
     __captureNum = 1
     __cap = None
+    __saveFileName = './Cheeze/shutter'
     __vidDeviceNum = 0
     __width = 1024
     __height = 768
@@ -24,8 +25,8 @@ class CheezeShutter():
                 pass
                     
         self.__cap = cv2.VideoCapture(self.__vidDeviceNum)
-        self.__cap.set(3,self.__width)
-        self.__cap.set(4,self.__height)        
+        self.__cap.set(cv2.CAP_PROP_FRAME_WIDTH,self.__width)
+        self.__cap.set(cv2.CAP_PROP_FRAME_HEIGHT,self.__height)       
         
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(4,GPIO.OUT)
@@ -59,7 +60,7 @@ class CheezeShutter():
             
     def __saveFile(self,frame):
         GPIO.output(4,GPIO.HIGH)
-        saveName = './Cheeze/shutter'
+        saveName = self.__saveFileName
         picNum = 0
         while True:
             if Path(saveName + str(picNum) + '.png').exists():

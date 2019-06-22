@@ -10,9 +10,10 @@ class CheezeShutter():
     __waitSeconds = 1
     __captureNum = 1
     __cap = None
+    __saveFileName = '/home/puppy/pic/Cheeze/shutter'
     __vidDeviceNum = 1
-    __width = 1024
-    __height = 768
+    __width = 1280
+    __height =  760
     __autoCapMode = True
     __autoCapClockSeconds = 5
     
@@ -23,8 +24,9 @@ class CheezeShutter():
                 pass
                     
         self.__cap = cv2.VideoCapture(self.__vidDeviceNum)
-        self.__cap.set(3,self.__width)
-        self.__cap.set(4,self.__height)        
+        self.__cap.set(cv2.CAP_PROP_FPS,30)
+        self.__cap.set(cv2.CAP_PROP_FRAME_WIDTH,self.__width)
+        self.__cap.set(cv2.CAP_PROP_FRAME_HEIGHT,self.__height)
         
     def shutter(self):
         startTime = datetime.now()
@@ -54,7 +56,7 @@ class CheezeShutter():
             sys.exit(0)
             
     def __saveFile(self,frame):
-        saveName = 'shutter'
+        saveName = self.__saveFileName
         picNum = 0
         while True:
             if Path(saveName + str(picNum) + '.png').exists():
@@ -62,7 +64,7 @@ class CheezeShutter():
             else:
                 break
                 
-        cv2.imwrite(saveName + str(picNum) + '.png',frame)
+        cv2.imwrite(saveName + str(picNum) + '.png',frame, (self.__width,self.__height))
 
 if __name__ == '__main__':
     chs = CheezeShutter()
