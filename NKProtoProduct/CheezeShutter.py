@@ -22,6 +22,8 @@ class CheezeShutter():
             conf = Path(sys.argv[1])
             if conf.is_file and conf.name() == 'cheezeShutter.conf':
                 pass
+        if len(sys.argv) > 2:
+            self.__autoCapMode == bool(sys.argv[2])
                     
         self.__cap = cv2.VideoCapture(self.__vidDeviceNum)
         self.__cap.set(cv2.CAP_PROP_FPS,30)
