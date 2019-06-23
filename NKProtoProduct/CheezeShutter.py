@@ -12,19 +12,19 @@ class CheezeShutter():
     __cap = None
     __saveFileName = '/home/puppy/pic/Cheeze/shutter'
     __vidDeviceNum = 1
-    __width = 1280
-    __height =  760
-    __autoCapMode = True
+    __width = 780
+    __height =  780
+    __autoCapMode = False
     __autoCapClockSeconds = 5
     
     def __init__(self):
+        #if len(sys.argv) > 1:
+        #    conf = Path(sys.argv[3])
+        #    if conf.is_file and conf.name() == 'cheezeShutter.conf':
+        #        pass
         if len(sys.argv) > 1:
-            conf = Path(sys.argv[1])
-            if conf.is_file and conf.name() == 'cheezeShutter.conf':
-                pass
-        if len(sys.argv) > 2:
-            self.__autoCapMode == bool(sys.argv[2])
-                    
+            self.__autoCapMode = bool(int(sys.argv[1]))
+        
         self.__cap = cv2.VideoCapture(self.__vidDeviceNum)
         self.__cap.set(cv2.CAP_PROP_FPS,30)
         self.__cap.set(cv2.CAP_PROP_FRAME_WIDTH,self.__width)
