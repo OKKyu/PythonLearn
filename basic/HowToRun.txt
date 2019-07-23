@@ -1,19 +1,19 @@
-���s���@ 
+実行方法 
 
-�Epy
-  �Θb���[�h�ɂȂ�B�I�����ɂ�exit()�����s����
+・py
+  対話モードになる。終了時にはexit()を実行する
 
-�Epy [-version] �X�N���v�g��.py [�����P,�����Q, ...]
-  �g���q".py",".pyw",".pyc"�ƂȂ��Ă���t�@�C�����R���\�[����Ŏ��s����B
-  �I�v�V�����Ƀo�[�W�����ԍ����w�肷�邱�Ƃ�python�̃o�[�W������I���\�B
-  �ȗ������OS�ɃC���X�g�[�����ꂽpython�̂����ŐV�̃o�[�W�����Ŏ��s�����B
-  ��py�̑����python3 �ȂǂƃR�}���h���Ă��ǂ��B�����̐����̓C���X�g�[������
-   python�̃o�[�W�����ɍ��킹�ēK�X�ύX����B�o�[�W�����̊m�F��Java���l
-   --version �I�v�V�����t���Ŏ��s���邱�ƂŎ����\�B
+・py [-version] スクリプト名.py [引数１,引数２, ...]
+  拡張子".py",".pyw",".pyc"となっているファイルをコンソール上で実行する。
+  オプションにバージョン番号を指定することでpythonのバージョンを選択可能。
+  省略するとOSにインストールされたpythonのうち最新のバージョンで実行される。
+  →pyの代わりにpython3 などとコマンドしても良い。末尾の数字はインストールした
+   pythonのバージョンに合わせて適宜変更する。バージョンの確認はJava同様
+   --version オプション付きで実行することで実現可能。
 
-  �o�[�W�����w���.py�t�@�C���̖`����
+  バージョン指定は.pyファイルの冒頭に
      #! python3
-  �ƃR�����g���邱�Ƃł��\�B
+  とコメントすることでも可能。
 
-  �X�N���v�g���̌��ɃR�}���h���C���������X�y�[�X��؂�œ���邱�Ƃ��\�B
-  sys.argv�ϐ����Ɋi�[�����Bargv[0]�ɂ̓X�N���v�g��������_�ɒ��ӁB
+  スクリプト名の後ろにコマンドライン引数をスペース区切りで入れることも可能。
+  sys.argv変数内に格納される。argv[0]にはスクリプト名が来る点に注意。

@@ -4,7 +4,7 @@
 # def 関数名( [引数...] ) :
 #      インデントして処理内容を記載してゆく
 def initlog(args):
-	print("input:" + sys.argv[0])
+    print("input:" + sys.argv[0])
 
 #引数にデフォルト値の指定が可能。
 #また、デフォルト値が指定された引数は入力を省略できる。

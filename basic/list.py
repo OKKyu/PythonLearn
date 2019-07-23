@@ -1,69 +1,69 @@
 #! python3 
 # -*- coding: UTF-8 -*-
-# ƒŠƒXƒgi”z—ñj‚ÌŠî–{
+# ãƒªã‚¹ãƒˆï¼ˆé…åˆ—ï¼‰ã®åŸºæœ¬
 
-#ƒŠƒXƒgéŒ¾@JavaScript‚Æ“¯‚¶
+#ãƒªã‚¹ãƒˆå®£è¨€ã€€JavaScriptã¨åŒã˜
 squares = [1,4,9,16,25]
 print(squares)
 
-#•¶š—ñ‚â‘¼ƒV[ƒPƒ“ƒXƒIƒuƒWƒFƒNƒg“¯—l‚Ì“Y‚¦šƒAƒNƒZƒX‚ª‰Â”\B
+#æ–‡å­—åˆ—ã‚„ä»–ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåŒæ§˜ã®æ·»ãˆå­—ã‚¢ã‚¯ã‚»ã‚¹ãŒå¯èƒ½ã€‚
 print(squares[0])
 print(squares[-1])
 print(squares[-3:])
 
-#‘SƒŠƒXƒg—v‘f‚ğƒXƒ‰ƒCƒX‚µ‚½ê‡‚ÍV‚µ‚¢ƒŠƒXƒgƒRƒs[‚ğ•Ô‹p‚·‚éB
+#å…¨ãƒªã‚¹ãƒˆè¦ç´ ã‚’ã‚¹ãƒ©ã‚¤ã‚¹ã—ãŸå ´åˆã¯æ–°ã—ã„ãƒªã‚¹ãƒˆã‚³ãƒ”ãƒ¼ã‚’è¿”å´ã™ã‚‹ã€‚
 newSqu = squares[:]
 print("Original List:" + str(squares))
 print("Copied List:" + str(newSqu))
 
-#ƒŠƒXƒg‚Í‰Â•Ï‚Ì‚½‚ß—v‘f‚Ì“à—e‚ğ•ÏX‚Å‚«‚éB‚µ‚©‚àŒ^‚Í–â‚í‚È‚¢
+#ãƒªã‚¹ãƒˆã¯å¯å¤‰ã®ãŸã‚è¦ç´ ã®å†…å®¹ã‚’å¤‰æ›´ã§ãã‚‹ã€‚ã—ã‹ã‚‚å‹ã¯å•ã‚ãªã„
 newSqu[1] = 'hello'
 print("Original List:" + str(squares))
 print("Copied List:" + str(newSqu))
 
-#ƒŠƒXƒg‚Ì˜AŒ‹‚à‰Â”\
+#ãƒªã‚¹ãƒˆã®é€£çµã‚‚å¯èƒ½
 newSqu = newSqu + ['HeyHeyHeeey!','GYaaaaaAAA!!']
 print("Copied List:" + str(newSqu))
 
-#append()‚ğg‚Á‚Ä––”ö‚É—v‘f‚ğ’Ç‰Á‚·‚é‚±‚Æ‚à‰ÂB
+#append()ã‚’ä½¿ã£ã¦æœ«å°¾ã«è¦ç´ ã‚’è¿½åŠ ã™ã‚‹ã“ã¨ã‚‚å¯ã€‚
 newSqu.append(32111)
 print("Copied List:" + str(newSqu))
 
-#ƒXƒ‰ƒCƒX‚ğg‚Á‚Ä‘ã“ü‚à‰Â”\B
+#ã‚¹ãƒ©ã‚¤ã‚¹ã‚’ä½¿ã£ã¦ä»£å…¥ã‚‚å¯èƒ½ã€‚
 newSqu[2:4] = [0,0,1]
 print("Copied List:" + str(newSqu))
 
-#íœ‚à‰Â”\B
+#å‰Šé™¤ã‚‚å¯èƒ½ã€‚
 newSqu[2:5] = []
 print("Copied List:" + str(newSqu))
-#‘S•”íœ
+#å…¨éƒ¨å‰Šé™¤
 newSqu[:] = []
 print("Copied List:" + str(newSqu))
 
-#lenŠÖ”‚Å—v‘f”‚ğæ“¾‰Â”\B
+#lené–¢æ•°ã§è¦ç´ æ•°ã‚’å–å¾—å¯èƒ½ã€‚
 print("Original List len:" + str(len(squares)))
 
-#“ü‚êq‚à‰Â”\B‘½ŸŒ³”z—ñB
+#å…¥ã‚Œå­ã‚‚å¯èƒ½ã€‚å¤šæ¬¡å…ƒé…åˆ—ã€‚
 listlist = [[1,3,5],['a','b','c']]
 print("[0][1] :" + str(listlist[0][1]))
 print("[1][2] :" + str(listlist[1][2]))
 
-#‚±‚ê‚Í–Ê”’‚¢B
-#for•¶‚ÅƒŠƒXƒgì¬‚ª‰Â”\B
-# i * 2 ‚ğ”z—ñ—v‘f‚Æ‚µ‚Ä•Ô‹p‚·‚éB‚±‚ê‚ğrange(10)‚Å10‰ñŒJ‚è•Ô‚·B
+#ã“ã‚Œã¯é¢ç™½ã„ã€‚
+#foræ–‡ã§ãƒªã‚¹ãƒˆä½œæˆãŒå¯èƒ½ã€‚
+# i * 2 ã‚’é…åˆ—è¦ç´ ã¨ã—ã¦è¿”å´ã™ã‚‹ã€‚ã“ã‚Œã‚’range(10)ã§10å›ç¹°ã‚Šè¿”ã™ã€‚
 numbers = [i * 2 for i in range(10)]
 print(numbers)
 print(len(numbers))
 
-#“Ç‚İ‚É‚­‚¢‚ªˆÈ‰º‚Ì’Ê‚è
-#  [1 for i in range(3)] ‚Å’l‚ª1‚Ì—v‘f‚ğ3‚Â‚ÂƒŠƒXƒg‚ğì¬
-#   ã‹L‚ğrange(4)‚Å4‰ñŒJ‚è•Ô‚·B
-#   [1,1,1]‚ÌƒŠƒXƒg‚ª‚SŒÂ“ü‚Á‚½‚QŸŒ³”z—ñ‚ªŠ®¬B
+#èª­ã¿ã«ãã„ãŒä»¥ä¸‹ã®é€šã‚Š
+#  [1 for i in range(3)] ã§å€¤ãŒ1ã®è¦ç´ ã‚’3ã¤æŒã¤ãƒªã‚¹ãƒˆã‚’ä½œæˆ
+#   ä¸Šè¨˜ã‚’range(4)ã§4å›ç¹°ã‚Šè¿”ã™ã€‚
+#   [1,1,1]ã®ãƒªã‚¹ãƒˆãŒï¼”å€‹å…¥ã£ãŸï¼’æ¬¡å…ƒé…åˆ—ãŒå®Œæˆã€‚
 numbers2 = [[1 for i in range(3)] for j in range(4)]
 numbers2[0][1] = 2
 print(numbers2)
 
-#ƒŠƒXƒg‚©‚çŠe•Ï”‚Ö‚Ì‘ã“ü‚ª‚Å‚«‚éB‚±‚ê‚Í•Ö—˜‚»‚¤B
+#ãƒªã‚¹ãƒˆã‹ã‚‰å„å¤‰æ•°ã¸ã®ä»£å…¥ãŒã§ãã‚‹ã€‚ã“ã‚Œã¯ä¾¿åˆ©ãã†ã€‚
 number3 =  [i for i in range(3) ]
 number3_0, number3_1, number3_2 = number3
 print(number3)
