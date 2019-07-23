@@ -27,6 +27,7 @@ print("width * height " + str(width * height))
 
 #値を代入しない変数の宣言は不可能。
 #以下コメントアウトを外すと"name not defined"例外が発生する。
+#name
 
 #対話モード限定
 #最後に表示された結果は変数 _ に代入される。
