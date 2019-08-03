@@ -9,17 +9,18 @@ from pathlib import Path
 target = Path(sys.argv[1])
 if target.is_file():
     img = cv2.imread(str(target))
+    img = cv2.resize(img,(1024, 1024))
     cv2.imshow("beforeContours",img)
-    cv2.waitKeyEx(0)
     
     imgray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+    cv2.imshow("afterGrayScale",imgray)
     #0:black 255:white
-    #mode0: if over threshold, redraw maxvalue.
-    #mode1: if under threshold,redraw maxvalue.
-    ret,thresh = cv2.threshold(imgray,120,255,3)
-    #cv2.line(thresh,(0,0),(350,350),255,20)
+    #cv2.THRESH_BINARY: if over threshold, redraw maxvalue. if under threshold redraw 0.
+    #cv2.THRESH_BINARY_INV: if under threshold,redraw maxvalue. if over threshold redraw 0.
+    #cv2.THRESH_TRUNC     : if over threshold,redraw by threshold. if under threshold,not redraw.
+    #ret,thresh = cv2.threshold(imgray,120,255,3)
+    ret,thresh = cv2.threshold(imgray,100,255,cv2.THRESH_BINARY)
     cv2.imshow("afterBinarized",thresh)
-    cv2.waitKeyEx(0)
     
     contours, hierarchy = cv2.findContours(thresh,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
     afterContours = cv2.drawContours(img, contours, -1, (0,255,0), 5)
