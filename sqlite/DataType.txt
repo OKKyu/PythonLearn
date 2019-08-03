@@ -1,0 +1,9 @@
+SQLite は以下の型をネイティブにサポートします: NULL, INTEGER, REAL, TEXT, BLOB。
+したがって、次の Python の型は問題なく SQLite に送り込めます:
+
+Python の型  SQLite の型
+None         NULL
+int          INTEGER
+float        REAL
+str          TEXT
+bytes        BLOB
