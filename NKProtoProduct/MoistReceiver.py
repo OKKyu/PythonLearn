@@ -1,3 +1,4 @@
+#! python3
 # coding: utf-8
 # flask can run that server daemon. please run from console bellow
 #    FLASK_APP=minimumset.py FLASK_ENV=development
@@ -19,7 +20,8 @@ def moistinfo():
     app.logger.debug("data point:" + str(request.json["VCC"]))
     app.logger.debug("receive ok to " + socket.gethostname())
     
-    __saveMoistInfo(sendedIP,request.json["VCC"])
+    if conn is not None:
+        __saveMoistInfo(sendedIP,request.json["VCC"])
     
     return "receive ok to " + socket.gethostname()
 
@@ -29,7 +31,7 @@ def __connectDb__():
     try:
         c.execute('select * from moist')
     except OperationalError as operr:
-        createTable = 'CREATE TABLE moist (id INTEGER PRIMARY KEY AUTOINCREMENT, t timestamp, ipaddr TEXT, moistpoint INTEGER )'
+        createTable = 'CREATE TABLE moist (id INTEGER PRIMARY KEY AUTOINCREMENT, ipaddr TEXT, t timestamp, moistpoint INTEGER )'
         c.execute(createTable)
     except Exception:
         conn.rollback()
@@ -51,9 +53,8 @@ def __saveMoistInfo(ipaddr, moistpt):
         conn.commit()
         
 if __name__ == '__main__':
-    if conn is not None:
-        #app.run()
-        app.run(host='0.0.0.0', debug=True, port=5001)
-    else:
-        print('connection is failed. stop run MoistReceiver.py')
+    #app.run()
+    app.run(host='0.0.0.0', debug=True, port=5001)
+    if conn is None:
+        print('connection is failed. this service isnt save moistinfo... but running.')
 
