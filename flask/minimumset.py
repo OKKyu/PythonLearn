@@ -1,7 +1,8 @@
 # coding: utf-8
 # flask can run that server daemon. please run from console bellow
-# FLASK_APP=minimumset.py FLASK_ENV=development flask run
-
+#    FLASK_APP=minimumset.py FLASK_ENV=development
+#    flask run
+from pathlib import Path
 from flask import Flask, render_template, Markup
 app = Flask(__name__)
 
@@ -29,5 +30,13 @@ def markupSample():
     #Markup return webelement object. but replaced Parameter String has markup, then escape simply str.
     return Markup('<strong>Hello {}!</strong>').format('<blink>hacker</blink>')
 
+@app.route('/wifitest/<int:numb>')
+def wifiTest(numb):
+    print(numb)
+    wfile = Path('./result.txt')
+    wfile.write_text("success" + str(numb))
+    return str(numb * 2)
+
 if __name__ == '__main__':
-    app.run()
+    #app.run()
+    app.run(host='0.0.0.0', debug=True, port=5001)
