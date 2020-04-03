@@ -7,7 +7,7 @@ import numpy as np
 
 circle = np.zeros((400,400,3), np.uint8)
 #image,center point,length,color(BGR),thickness
-cv2.circle(circle,(200,64), 32, (0,0,255), -1)
+cv2.circle(circle,(32,64), 32, (0,0,255), -1)
 cv2.imshow("circle",circle)
 cv2.waitKeyEx(0)
 
@@ -26,3 +26,19 @@ contours, hierarchy = cv2.findContours(imgray,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIM
 circle = cv2.drawContours(circle, contours, -1, (0,255,0), 5)
 cv2.imshow("circle",circle)
 cv2.waitKeyEx(0)
+
+#calculate area size
+for contour in contours:
+    print("result contourArea:" + str(cv2.contourArea(contour)))
+    x,y,w,h = cv2.boundingRect(contour)
+    
+    #display rectangle region.
+    circle = cv2.rectangle(circle,(x,y),(x+w,y+h),(0,0,255),1)
+    cv2.imshow("circle",circle)
+    cv2.waitKeyEx(0)
+    
+    #cropping
+    cv2.imshow("circle",circle[y:y+h,x:x+w])
+    cv2.waitKeyEx(0)
+
+

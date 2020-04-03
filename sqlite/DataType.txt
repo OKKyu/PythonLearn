@@ -7,3 +7,11 @@ int          INTEGER
 float        REAL
 str          TEXT
 bytes        BLOB
+
+シーケンスの付与
+ id INTEGER PRIMARY KEY AUTOINCREMENT
+ ただし、複合主キーにAUTOINCREMENTは付けられない。MAX値値で採番する場合は別途select max() で
+ 取らないといけない。
+
+
+また、型チェックをしているように見えない。

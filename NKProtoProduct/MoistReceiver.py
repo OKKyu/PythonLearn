@@ -8,10 +8,11 @@ from pathlib import Path
 import datetime
 from flask import Flask, request
 import sqlite3 as sqlite
+from sqlite3 import OperationalError
+from sqlite3 import Cursor
 
 #initialize
 app = Flask(__name__)
-conn = __connectDb__()    
 
 @app.route('/moistinfo', methods=['POST'])
 def moistinfo():
@@ -26,7 +27,7 @@ def moistinfo():
     return "receive ok to " + socket.gethostname()
 
 def __connectDb__():
-    conn = sqlite3.connect('MoistInfo.db')
+    conn = sqlite.connect('MoistInfo.db')
     c = conn.cursor()
     try:
         c.execute('select * from moist')
@@ -53,6 +54,7 @@ def __saveMoistInfo(ipaddr, moistpt):
         conn.commit()
         
 if __name__ == '__main__':
+    conn = __connectDb__()    
     #app.run()
     app.run(host='0.0.0.0', debug=True, port=5001)
     if conn is None:
