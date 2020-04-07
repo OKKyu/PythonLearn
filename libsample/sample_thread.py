@@ -3,7 +3,7 @@
 
 import sys
 import time
-import thread
+import threading
 
 def f():
     i=1
@@ -11,10 +11,15 @@ def f():
         print(i)
         i = i + 1
         time.sleep(1)
+thObj = threading.Thread(target=f)
+thObj.start()
+#the above code is same as below.. but python2.
+#  import thread
+#  thread.start_new_thread(f, ())
 
-thread.start_new_thread(f, ())
-
+#exit control
 while True:
     c = sys.stdin.read(1)
-    if c == ' ':
+    print("read " + c)
+    if c == 'e':
         sys.exit()
