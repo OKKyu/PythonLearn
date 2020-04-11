@@ -3,6 +3,7 @@
 #Exceptionの基本
 
 import sys
+import traceback
 
 def test_exception(number):
     try:
@@ -20,6 +21,7 @@ try:
 
 except ZeroDivisionError as e:
     sys.stderr.write('0で割り算できません')
+    print(traceback.format_exc())
 
     
 #処理の流れ
