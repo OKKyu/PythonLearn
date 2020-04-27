@@ -34,3 +34,28 @@ dict1.setdefault('a', 21)
 print(dict1['a'])
 dict1.setdefault('ee', 343)
 print(dict1['ee'])
+
+#clear all elements.
+dict1.clear()
+print('clear dict1')
+print(dict1)
+
+#clear and return value by key.
+dict1 = {'a':12, 'ee':300}
+print('pop dict1 a')
+print(dict1.pop('a'))
+print('pop dict1 a')
+print(dict1.pop('a',None))
+print(dict1)
+
+#clear and return key&value by key.
+dict1 = {'a':12, 'ee':300}
+print('popitem dict1')
+print(dict1.popitem())
+print(dict1)
+
+#clear multi elements by keys.
+dict1 = {'a':12, 'ee':300}
+print('del dict1 a and ee')
+del dict1['a'], dict1['ee']
+print(dict1)
