@@ -22,9 +22,9 @@ faces = face_cascade.detectMultiScale(gray)
 for (x,y,w,h) in faces:
     #顔部分を四角で囲う
     cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
-    cv2.imshow('img',img)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+cv2.imshow('img',img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
 
 
 #other cascade xml

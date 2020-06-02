@@ -3,7 +3,7 @@
 import cv2
 
 #read image
-img = cv2.imread('/home/puppy/pic/pillowBasic001.jpg', cv2.IMREAD_COLOR)
+img = cv2.imread('/home/puppy/pic/UriHamushi.jpg', cv2.IMREAD_GRAYSCALE)
 #display image
 cv2.imshow("image",img)
 cv2.waitKey(0)
