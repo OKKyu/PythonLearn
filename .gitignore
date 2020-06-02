@@ -6,3 +6,7 @@
 *.jpg
 *.gif
 *.log
+*venv*
+*.json
+*.avi
+*__pycache__*
