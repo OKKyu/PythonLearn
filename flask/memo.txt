@@ -30,8 +30,8 @@ app.run(debug=True)
 
 ・URL埋め込み
   url_for(メソッド名)
-  url_for(メソッド名, next=URLパラメータ) 
-  url_for(メソッド名, username='John Doe')
+  url_for(メソッド名, next=URLパラメータ)    getメソッドのURLパラメータ
+  url_for(メソッド名, username='John Doe')　第２引数以降は@app.routeデコレータで指定したパラメータ。
   
   これを使って動的にhtml(テンプレート)へurlを埋め込める。
 
@@ -43,13 +43,34 @@ def login():
     else:
         show_the_login_form()
 
+・動的URL パラメータのカスタマイズ
+BaseConverterというものをurl_map.convertersに自作して追加する。
+デバックするとわかるが、url_mal.convertersには"int""path""string"というキーで
+クラス（BaseConverterを親とする）が登録されている。
+
+サンプルコード
+//BaseConverterをインポート
+from werkzeug.routing import BaseConverter
+
+//小クラスを作成する。以下は正規表現を組み込んだConverterを作成している。
+class RegexConverter(BaseConverter):
+  def __init__(self, url_map, *items):
+    super(RegexConverter, self).__init__(url_map)
+    self.regex = items[0]
+//自作Converterを登録
+app.url_map.converters['regex'] = RegexConverte
+
+情報源は以下サイト
+http://dotnsf.blog.jp/archives/1071121590.html
+
+
 ・リクエスト参照方法
 from flask import request
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     error = None
     if request.method == 'POST':
-        if valid_login(request.form['username'],    ←form以外のパラメータに渡された場合はどう取得する？
+        if valid_login(request.form['username'],    ←form以外のパラメータに渡された場合はどう取得する？ username,password is name elements
                        request.form['password']):    ←form以外のパラメータに渡された場合はどう取得する？
             return log_the_user_in(request.form['username'])
         else:
@@ -59,3 +80,13 @@ def login():
 
 URL (?key=value)で提起されたパラメータにアクセスするには、 args 属性を使うことができます:
 searchword = request.args.get('q', '')
+
+
+add_url_rule(url,endpoint,viewfunc)
+
+.howto return response of json object
+from flask import jsonify
+def loadMusics(numAlbum):
+    items = __getMusicsInAlbum(numAlbum)
+    return jsonify(items)
+
