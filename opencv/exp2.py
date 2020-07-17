@@ -35,7 +35,7 @@ def __getFrTo(img,plot=False):
         plt.hist(stdRange, bins=255)
         plt.show()
         
-    return [np.min(stdRange), np.max(stdTo)]
+    return [np.min(stdFr), np.max(stdTo)]
 
 
 
