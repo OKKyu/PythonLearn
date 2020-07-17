@@ -68,3 +68,7 @@ number3 =  [i for i in range(3) ]
 number3_0, number3_1, number3_2 = number3
 print(number3)
 print(str(number3_0) + " " + str(number3_1) + " " + str(number3_2))
+
+#list search
+list.index("1")
+list.count("1")
