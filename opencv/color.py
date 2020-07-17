@@ -3,6 +3,7 @@
 # 『Pythonで始めるOpenCV4プログラミング』
 #  北山尚洋
 import sys, cv2, traceback
+import matplotlib.pyplot as plt
 
 def equalize(imgName):
     try:
@@ -73,4 +74,4 @@ def colorDivide(imgName):
         pass
 
 #equalize(sys.argv[1])
-colorDivide(sys.argv[1])
+#colorDivide(sys.argv[1])

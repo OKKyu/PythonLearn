@@ -2,13 +2,21 @@
 # -*- coding:utf-8 -*-
 #this sample code from
 #https://www.tech-tech.xyz/3065942.html
-
+import sys
 import cv2
 
 #file root folder.
-fpath = "/home/puppy/pic/Tramp/"
-targetImg = "TrampAllSet.png"
-templateImg = "TrampD4.png"
+#"/media/puppy/linupic/Tramp/"
+#targetImg = "TrampAllSet.png"
+#templateImg = "TrampD4.png"
+fpath = sys.argv[1]
+targetImg = sys.argv[2]
+templateImg = sys.argv[3]
+
+def adjustImShow(wname,img,height,width):
+  cv2.namedWindow(wname, cv2.WINDOW_NORMAL)
+  cv2.resizeWindow(wname,height,width)
+  cv2.imshow(wname,img)
 
 #setup method
 def matching(img, temp, imgName, tempName):
@@ -33,7 +41,7 @@ def matching(img, temp, imgName, tempName):
   cv2.rectangle(result,top_left, bottom_right, (255, 0, 0), 2)
   cv2.imwrite(fpath + "result.png", result)
   
-  cv2.imshow(tempName + " Searched...", result)
+  adjustImShow(tempName + " Searched...", result, 800, 800)
   cv2.waitKey(0)
   cv2.destroyAllWindows()  
 
