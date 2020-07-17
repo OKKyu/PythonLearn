@@ -1,32 +1,60 @@
 ・サーバー公開モード
-app.run(host='0.0.0.0')
+  app.run(host='0.0.0.0')
 
 ・デバッグモード
-app.debug = True
-app.run もしくは
-app.run(debug=True)
+  app.debug = True
+  app.run もしくは
+  app.run(debug=True)
 
 ・末尾スラッシュの有無
-有りの場合
-  @app.route('/projects/')
-  URL入力時にスラッシュを入れ忘れてもリダイレクトされる。
+  有りの場合
+    @app.route('/projects/')
+    URL入力時にスラッシュを入れ忘れてもリダイレクトされる。
 
 ・無しの場合
-  @app.route('/projects')
-  スラッシュを入れ忘れるとNotFoundエラーとなる。
+    @app.route('/projects')
+    スラッシュを入れ忘れるとNotFoundエラーとなる。
 
 ・動的URL組み込み
-  @app.route('/user/<username>')
-  def show_user_profile(username):
-      # show the user profile for that user
-      pass
+  URLの後ろに<>をつけて記述する。
+    @app.route('/user/<username>')
+    def show_user_profile(username):
+        # show the user profile for that user
+        pass
 
-  コンバータ使用の場合（int,float,passの３種類。自動で型変換する、ということか。)
-  コンバータでint指定しないまま、post_idに対し四則演算などを行うとエラーになる。
-  @app.route('/post/<int:post_id>')
-  def show_post(post_id):
-      # show the post with the given id, the id is an integer
-      pass
+  コンバータ使用の場合
+    @app.route('/post/<int:post_id>')
+    def show_post(post_id):
+        # show the post with the given id, the id is an integer
+        pass
+  コンバータでint指定しないまま、post_idに対し四則演算などを行うと当然エラーになる。
+  標準ではint,float,passの３種類のコンバータがある。
+  
+ 補足：動的URL パラメータのカスタマイズ
+  標準では上述したint,flat,passの３種類しかないが、BaseConverterというものを
+  url_map.convertersに自作して追加することでコンバータを自作できる。
+  ＊デバックするとわかるが、url_map.convertersには"int""path""string"というキーで
+    BaseConverterを親とするクラスが登録されている。
+
+  サンプルコード
+   1)BaseConverterをインポート
+     from werkzeug.routing import BaseConverter
+
+   2)小クラスを作成する。以下は正規表現を組み込んだConverterを作成している。
+     class RegexConverter(BaseConverter):
+       def __init__(self, url_map, *items):
+         super(RegexConverter, self).__init__(url_map)
+         self.regex = items[0]
+
+   3)自作Converterを登録
+     app.url_map.converters['regex'] = RegexConverte
+
+   4)あとは動的URLで設定する。
+     @app.route('/user/<regex:aaa>')
+
+  情報源は以下サイト
+  http://dotnsf.blog.jp/archives/1071121590.html
+
 
 ・URL埋め込み
   url_for(メソッド名)
@@ -34,59 +62,172 @@ app.run(debug=True)
   url_for(メソッド名, username='John Doe')　第２引数以降は@app.routeデコレータで指定したパラメータ。
   
   これを使って動的にhtml(テンプレート)へurlを埋め込める。
+  第一引数には@app.routeデコレータに紐付けられたメソッド名で指定する。
+  勘違いして直接フォルダパスを書いてしまったこともあったが、間違えないよう。
+  テンプレートhtml内に記述することもできるし、pythonコード内で記述することもできる。
 
 ・httpメソッド指定
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        do_the_login()
-    else:
-        show_the_login_form()
-
-・動的URL パラメータのカスタマイズ
-BaseConverterというものをurl_map.convertersに自作して追加する。
-デバックするとわかるが、url_mal.convertersには"int""path""string"というキーで
-クラス（BaseConverterを親とする）が登録されている。
-
-サンプルコード
-//BaseConverterをインポート
-from werkzeug.routing import BaseConverter
-
-//小クラスを作成する。以下は正規表現を組み込んだConverterを作成している。
-class RegexConverter(BaseConverter):
-  def __init__(self, url_map, *items):
-    super(RegexConverter, self).__init__(url_map)
-    self.regex = items[0]
-//自作Converterを登録
-app.url_map.converters['regex'] = RegexConverte
-
-情報源は以下サイト
-http://dotnsf.blog.jp/archives/1071121590.html
-
+  @app.route('/login', methods=['GET', 'POST'])
+  def login():
+      if request.method == 'POST':
+          do_the_login()
+      else:
+          show_the_login_form()
 
 ・リクエスト参照方法
-from flask import request
-@app.route('/login', methods=['POST', 'GET'])
-def login():
-    error = None
-    if request.method == 'POST':
-        if valid_login(request.form['username'],    ←form以外のパラメータに渡された場合はどう取得する？ username,password is name elements
-                       request.form['password']):    ←form以外のパラメータに渡された場合はどう取得する？
+ POSTの場合
+  from flask import request
+  @app.route('/login', methods=['POST', 'GET'])
+  def login():
+      error = None
+      if request.method == 'POST':
+          if valid_login(request.form['username'],
+                         request.form['password']):
             return log_the_user_in(request.form['username'])
         else:
             error = 'Invalid username/password'
     # this is executed if the request method was GET or the
     # credentials were invalid
 
-URL (?key=value)で提起されたパラメータにアクセスするには、 args 属性を使うことができます:
-searchword = request.args.get('q', '')
+  クライアントからリクエストが飛んできた際に、自動でrequestオブジェクトに変換されて当メソッドに来る。
+  キー名はhtml要素のnameに指定された値となる。id要素やクラス要素ではない点に注意。
+  request.formはImmutableMultiDictという特殊な辞書型で、読み取りはできるが書き込みはできない。
+  通常の辞書型へコピーするメソッドは用意されているが、あくまで非破壊敵な操作である。　→ request.form.to_dict(flat=True)
+
+ GETの場合
+  URL (?key=value)で提起されたパラメータにアクセスするには、 args 属性を使うことが可能。:
+    searchword = request.args.get('q', '')
+    add_url_rule(url,endpoint,viewfunc)
+
+・リクエストからユーザーエージェントを取得する方法
+  エージェント文字列全体の取得なら以下でよい
+    from flask import request
+    request.headers.get('User-Agent')
+  
+  部分的な情報を取得する場合は以下の方法もある。
+   
+    request.user_agent object which contains the following attributes which are created based on the useragent string:
+      platform (windows, linux, macos, etc.)
+      browser (chrome, firefox, msie, etc.)
+      version
+      language
+      string (== request.headers.get('User-Agent'))
+
+・Httpレスポンスとしてhtmlを返す方法
+  1)render_templateを使用する
+    from flask import Flask, render_template
+    @app.route('/')
+    def sample():
+       return render_template('templates/index.html', value1='abcde')
+
+    上記でtemplatesフォルダ配下のindex.htmlを読み込み、自動でHttpResponseをクライアントへ返す。
+    第２引数以降にはテンプレートとなるhtmlへパラメータとして渡される。渡されたパラメータはhtml上で
+    JinjaのStatementsやExpressionsで参照できる。{{ value1 }}　　{% if value1 == 'abcde' %} 等。
+    パラメータは複数指定可能。またflask側でパラメータに値を入れず省略した場合にもエラーにはならずHttpResponseは
+　　 返される。
+ 
+  2)Markupを使用する
+    from flask import Flask, Markup
+    #Markup return webelement object. but replaced Parameter String has markup, then escape simply str.
+    return Markup('<strong>Hello {}!</strong>').format('<blink>hacker</blink>')
+    
+    JSP/Servletにもあった。コード上で直接WebElementを生成して返す。
+    HTMLドキュメントをまるごと書いて返すこともできるだろうが、通常は部分的かつ動的にページを更新するのに使う（jsのajaxと併用）。
+    また英語コメントによると、format関数で変換された値はWebElementではなく文字列にエスケープされる。ハッキング対策と思われる。
+
+  3)Responseインスタンスを生成、返却する
+    from flask import Flask, Response
+    @app.route('/')
+    def sample():
+       response = app.make_response(render_template('templates/index.html', value1='abcde'))
+       response.set_cookie('User', 'aaa')
+       return response
+
+    make_responseの引数にはrender_templateで生成されたhtmlドキュメントやMarkupで生成されたWebElementを渡す。
+　　 あとは返却するだけでも良いが、render_templateとは異なりレスポンスヘッダやクッキーの設定が可能。
+    より高度な調整を施してレスポンスを返したい場合はresponseオブジェクトを利用すると覚えておくとよい。
+
+  4)redirect
+    from flask import Flask, redirect
+    @app.route('/')
+    def sample():
+        return redirect('/')
+
+    直接レスポンスを返すのではなく、flaskが自身にHttpリクエストを投げ直すような動作をする。
+    ログイン失敗時や予期せぬアクセスの禁止時等、表示するページを切り替えたい場合などに使える。
+    引数には@app.routeデコレータに指定したURLを指定する。また、動的URLの場合にはパラメータも指定が必要となる。
+
+・Httpレスポンスとしてjsonを返す方法
+  flaskのjsonifyを使用する。
+    from flask import jsonify
+    def loadMusics(numAlbum):
+        items = dict {}
+        return jsonify(items)
+  引数にはdict型を入れればよい。
+
+・Httpレスポンスとしてコンテンツを返す方法
+  コンテンツのみを返却する場合はresponseを使う。
+  また、以下はBase64として返却する方法ではない。
+        with app.open_resource( contentsPath ) as f:
+            response = app.make_response(f.read())
+            response.headers['Content-Type'] = 'audio/wav'
+            response.headers['Content-Disposition'] = 'attachment; filename=sound.wav'
+            return response
+
+   app.make_responseの引数にfileクラスの読み込み結果を入れる。バイナリでも良い。
+   あとはヘッダーのContent-TypeとContent-Dispositionを設定する。
+   Content-Type 
+     オーディオであれば audio/wav audio/mp3 など。
+     画像であれば      image/jpeg image/png など。
+　　　詳細はHTMLのMime-Type辺りを調べると良い。
+
+   Content-Disposition
+     これは調査が必要。とりあえすfilenameでデフォルトのファイル名を指定しているのだけは分かる。
 
 
-add_url_rule(url,endpoint,viewfunc)
+   send_fileメソッドを使う方法もある。
+    from flask import send_file
 
-.howto return response of json object
-from flask import jsonify
-def loadMusics(numAlbum):
-    items = __getMusicsInAlbum(numAlbum)
-    return jsonify(items)
+    @app.route('/path')
+    def view_method():
+         path_to_file = "/test.wav"
+
+         return send_file(
+             path_to_file, 
+             mimetype="audio/wav", 
+             as_attachment=True, 
+             attachment_filename="test.wav")
+
+・ファイルのアップロード
+　 1)リクエストからファイルを取得
+     request.files['要素のname'] に格納されてくる。request.formとは異なるので間違えないように。
+     files['要素のname'].filename でファイル名も取れる。
+
+   2)filesのsaveメソッドを使用する。
+     files['要素のname'].save( 保存先パス )
+   
+　　割と簡単。
+
+・SSL化
+  証明書ファイルと秘密鍵をsslライブラリに設定し、app.runのssl=contextパラメータに渡せばよい。
+  
+      import ssl
+      sec_path = Path('./imp_secret.key')
+      crt_path = Path('./imp_cert.crt')
+      ssl_context = ssl.SSLContext()
+      ssl_context.load_cert_chain('./imp_cert.crt', './imp_secret.key')
+      app.run(host='0.0.0.0', debug=True, port=5001, threaded=True, ssl_context=ssl_context)
+
+  ただ、WSGIにもssl設定はあるので、flaskではなくnginxやgunicornでssl化させたほうがいいだろう。
+  flask = ビジネスロジック  WSGI = ネットワーク、セキュリティ、その他非機能要件
+  としたほうが実装の住み分けができそうだし。
+
+・flaskアプリのパス追加
+  flask標準では、static,templateフォルダ以外はurl_forやrender_templateでアクセスができない。
+  新たにアクセス可能なフォルダを追加する場合はBlueprintとして登録する。
+    #add contents folder
+    contentsdir = Blueprint(name="contents", import_name="contents", static_url_path= "/contents", static_folder= "./contents")
+    app.register_blueprint(contentsdir)
+
+  name,import_nameの違い等がまだ良くわかっていない。調査が必要。
 
