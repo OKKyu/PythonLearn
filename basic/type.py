@@ -97,6 +97,26 @@ print(isinstance('string', str))
 #いちいち if ... instanceof ... or ... instanceof ... と繰り返さないでもできる。
 print(isinstance(100, (int, str)))
 
+#複素数(complex)
+#代入時には数値リテラルの後ろに "j" を付ける
+com = 1.2 + 3.4j
+#実部の参照
+print(com.real)
+#虚部の参照
+print(com.imag)
 
 
+#バイト型 immutableで、文字列などを単なるバイトデータとして管理したい場合などに使う。
+#代入 以下はどれも同じ結果となる
+a = b'abcd'
+b = bytes([97,98,99,100])
+c = 'abcd'.encode()
 
+#バイト配列 mutableという点以外はバイト型と同じ。
+#代入 以下はどれも同じ結果となる
+a = bytearray('abcd','utf-8')
+b = bytearray(b'abcd')
+c = bytearray([97,98,99,100])
+
+#escape sequences
+print("\'\"\a\b\f\r\n\t")

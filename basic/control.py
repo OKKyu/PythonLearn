@@ -65,8 +65,6 @@ for n in range(2, 10):
 while True:
    pass
 
-#paizaより  enumerateを使うことでインデックスも一緒にループ内へ送ることも可能。
-team = ["勇者","戦士","魔法使い"]
-for (i,person) in enumerate(team):
-   print(str(i + 1) + "番目の" + person + "が、スライムと戦った")
-
+#補足：条件式が偽となる値
+#None, False, 整数のゼロ(0, 0.0, 0.0j), 空文字列, 空リスト,タプル,辞書
+#上記以外は真
