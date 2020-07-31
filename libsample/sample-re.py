@@ -15,11 +15,13 @@ print("start index:" + str(m.start()) + " end index:" + str(m.end()))
 #2) complie and search
 #   first arguments is pattern.
 cmp = re.compile('def')
-#   you can search by search of cmp instead of re's one.
+#   you can search with cmp's search method instead of re's one.
 m = cmp.search('abcdef')
+print(m)
 
 #   if no matched, search's result return None.
 m = cmp.search('aaaaa')
+print(m)
 
 #3) grouping
 cmp = re.compile(r'(\d\d\d)-(\d\d\d\d-\d\d\d\d)')
