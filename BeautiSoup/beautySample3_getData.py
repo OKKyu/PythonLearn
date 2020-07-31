@@ -3,7 +3,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-r = requests.get('http://gihyo.jp/lifestyle/clip/01/everyday-cat')
+r = requests.get('https://gihyo.jp/lifestyle/clip/01/everyday-cat')
 soup = BeautifulSoup(r.content, 'html.parser')
 
 div = soup.find('div', class_='readingContent01')

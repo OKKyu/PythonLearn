@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 
 import re #正規表現ライブラリ
 
-r = requests.get('http://gihyo.jp/lifestyle/clip/01/everyday-cat')
+r = requests.get('https://gihyo.jp/lifestyle/clip/01/everyday-cat')
 soup = BeautifulSoup(r.content, 'html.parser')
 
 a_tags = soup.find_all('a') #該当タグを全て検索

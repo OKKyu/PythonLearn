@@ -4,10 +4,10 @@
 import requests
 from bs4 import BeautifulSoup
 
-r = requests.get('http://gihyo.jp/lifestyle/clip/01/everyday-cat')
+r = requests.get('https://gihyo.jp/lifestyle/clip/01/everyday-cat')
 soup = BeautifulSoup(r.content,'html.parser')
 
-#beautifulSoup can also css selector.
+#beautifulSoup can also use css selector.
 a_tags = soup.select('body a')
 print(len(a_tags))
 
