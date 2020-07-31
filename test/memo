@@ -1,0 +1,47 @@
+＜doctest＞
+　docstringの中にテストコードを記入する。
+　・テストの記述方法
+　　docstring内部に
+   >>> コード（条件式が望ましい。）
+   結果（True or False, 期待値など）
+   という形で書く。
+
+　・テストの実行方法
+　　__name__ = "__main__"の場合に
+　　　import doctest
+　　　doctest.testmod()
+　を実行する。
+　単体テスト用となる。
+
+　・良い点
+　　メソッドのインプット・アウトプットの関係をdocstringに説明
+　　として記述しつつ、それが単体テストにも使われる。一石二鳥。
+
+　・まずそうな点
+　　テストコードそのもののバグが見つけづらそう。
+　　テストケースが多くなるとドキュメントとしてIDEから読むときに
+    読みづらくなりそう。
+   複雑なテストには向かない。１行単位が基本なので、
+　　インプットの準備が巨大になる場合には書きづらい。
+　　コードとテストケースの分離ができない。
+
+＜unittest＞
+  JUnitみたいな使い方ができるツール。
+  ・テストのコード方法
+    まずはimport unittestする。テストしたいモジュールもインポートする。
+    unittest.TestCaseを継承したクラスを定義する。setUpとtearDownの
+    継承は任意でよい。
+　　 テストケースを作成する。self.assertXXXX 系のメソッドでテストする。
+    assert系メソッドの用法については適宜調べること。
+  ・テストの実行方法
+    テストモジュール内に書く方法
+      if __name__ == "__main__":
+          unittest.main()
+    コマンドラインから実行する方法
+      python -m unittest sample_unittest.py
+      特定のケースのみ、名称が部分一致するケースのみ実行などもできる。
+      こっちのほうが柔軟。
+
+ドキュメント
+https://pep8-ja.readthedocs.io/ja/latest
+https://www.python.org/dev/peps/pep-0257
