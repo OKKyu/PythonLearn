@@ -1,6 +1,7 @@
 #! python3
 #-*- encoding:utf-8 -*-
 #webページ取得サンプル
+#read only http headers
 import sys
 import requests
 
