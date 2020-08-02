@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 
 #lambda is no named function.
-#define lambda. but this lambda is runned.
+#define lambda. but this lambda isn't run.
 print(lambda x,y : x * 2 + y)
 
 #if define and run lamdba,
@@ -10,5 +10,5 @@ print(lambda x,y : x * 2 + y)
 f = lambda x,y : x * 2 + y
 print(f(1,2))
 
-# 2) wrapping lambda with (), and added signature ended.
+# 2) wrapping lambda with (), and added args ended.
 print( (lambda x,y : x * 2 + y) (1,2) )

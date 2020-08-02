@@ -15,7 +15,7 @@ class TestSum(unittest.TestCase):
     
     def setUp(self):
         '''
-          step two: If preparing before test is needs, shoud be override setUp method.
+          step two: If it is need to preparing before test, shoud be override setUp method.
         '''
         print("start setup")
     
