@@ -11,3 +11,4 @@
 *.avi
 *__pycache__*
 *.csv
+*.pickle
