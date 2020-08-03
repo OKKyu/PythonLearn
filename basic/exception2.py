@@ -30,3 +30,4 @@ except ZeroDivisionError as e:
 # finallyが実行される
 # raise eによって呼び出し元に委譲される
 # 呼び出し元のexcept句が実行される
+# raise eをしていない場合は関数を囲うtry句ではキャッチされない。

@@ -29,10 +29,29 @@ def ask_ok(prompt, retries=4, reminder='Please try again!'):
 #繰り返し、最終的にはグローバル領域のシンボルテーブルを参照する。(グローバルの後に組み込みの名前テーブルを参照とある？）
 #何もしなければ、外部の変数は参照しかできない。
 
+#追記 グローバル変数は原則関数内では参照しかできない。
+# 関数内でグローバル変数へ代入を行う場合には、global 変数名 で宣言してから行う。
+message = "paiza"
+def sum(x,y):
+    a = 3
+    global message
+    message += "paiza"
+    print(message + "hello" + str(a))
+    return x + y
+
+a = 10
+b = 20
+num = sum(a,b)
+print(num)
+print(message + "hello" + str(a))
+
+
 #重要
 #引数のデフォルト値は初回実行時にのみ初期化される。
 #引数のデフォルト値にリストなどを宣言している場合、関数を複数回呼び出すと前回実行時に保管されていたリストが使用される。
 #例えば以下はリストの要素が累積していく。
+#デフォルト値の設定がない引数（以下の場合はa）については
+#関数呼び出しのたびに入力が必須のため、この問題は起きない。
 def f(a, L=[]):
     L.append(a)
     return L
@@ -49,12 +68,12 @@ def f(a, L=None):
     return L
 
 #キーワード引数
-#関数の呼び出し時、引数名=変数名 という形式でも呼び出し可能。
+#関数の呼び出し時、引数名=value という形式でも呼び出し可能。
 def parrot(voltage, state):
 	print("voldage:" + voltage)
 	print("state:" + state)
 	
-parrot(voltage="1000",state="stable")
+parrot(voltage="1000", state="stable")
 
 #ただし以下はエラーとなる。
 #parrot(voltage=5.0, 'dead')  # non-keyword argument after a keyword argument
@@ -77,21 +96,35 @@ def write_multiple_items2(*args,separator):
 #指定すると実行できる。
 write_multiple_items2("alan","kate","ling",separator="/")
 
-#追記 グローバル変数は原則関数内では参照しかできない。
-# 関数内でグローバル変数へ代入を行う場合には、global 変数名 で宣言してから行う。
-message = "paiza"
-def sum(x,y):
-    a = 3
-    global message
-    message += "paiza"
-    print(message + "hello" + str(a))
-    return x + y
+#任意辞書リストもある。制約については任意引数リストと同じ。
+#また、任意辞書リストは一番最後の引数としてのみ宣言できる。
+#def write_multiple_items3(**words, *args, separator):  NG
+#def write_multiple_items3(*args, **words, separator):  NG
+#これはOK
+def write_multiple_items3(*args, separator, **words):
+    print(separator.join(args))
+    for key, val in words.items():
+        print(key + separator + val)
+#wordsは省略可能
+write_multiple_items3("alan", "kate", "ling", separator="/")
+write_multiple_items3("alan", "kate", "ling", separator="/", aa="aaa", bb="bbb")
 
-a = 10
-b = 20
-num = sum(a,b)
-print(num)
-print(message + "hello" + str(a))
+#
+def write_multiple_items4(separator, *args, **words):
+    print(separator.join(args))
+    for key, val in words.items():
+        print(key + separator + val)
+#
+write_multiple_items4("/", "alan", "kate", "ling")
+
+#引数の宣言について
+#以下ルールを設けていればトラブルは減らせると思う。
+#  1)初期値なし引数、初期値有り引数、任意引数リスト、任意辞書リストの順に宣言する
+#  2)オブジェクトやシーケンスを受け取る引数の場合、極力初期値はNoneにしておく。
+#    またチュートリアルのように、引数がNoneかどうかをチェックする。
+#    *これは他引数でも同様のことが言える。pythonの引数は型が自由だから
+#     必要なものがインプットされているか逐次チェックしたほうが良い。
+
 
 
 

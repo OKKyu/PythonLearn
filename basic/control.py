@@ -49,20 +49,22 @@ for i in range(-10,-20,-1):
 a = ['Mary', 'had', 'a', 'little', 'lamb']
 for i in range(len(a)):
    print(i, a[i])
+print("")
 
 #for、while文にelse文をもたせることができる。
-#これはループが終了したときに１回のみ実行される。ただしbreakされたときには実行されない。
+#in句内の要素が１個もなくループが１度も回らないときに実行される。
+#ループが終了したときに１回のみ実行される。breakされたときには実行されない。
 for n in range(2, 10):
    for x in range(2, n):
          if n % x == 0:   
-	    print(n, 'equals', x, '*', n//x)
-	    break
-         else:
+            print(n, 'equals', x, '*', n//x)
+            break
+   else:
          # loop fell through without finding a factor
             print(n, 'is a prime number')
 
 #pass文 処理行の記述を構文上求められるが、なんの動作も必要がない（させない）場合に使う。
-while True:
+if True:
    pass
 
 #補足：条件式が偽となる値
