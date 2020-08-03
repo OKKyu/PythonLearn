@@ -5,12 +5,11 @@ import time
 #calculation time.
 stime = time.time()
 result = 2
-for i in range(1,9999):
+for i in range(1,2):
     result = result * i
+    #wait milliseconds.
+    time.sleep(1)
 etime = time.time()
 print("result: " + str(result))
 print("time: " + str(etime - stime))
-
-#wait milliseconds.
-time.sleep(1)
 print("end")

@@ -7,7 +7,7 @@ from queue import Full
 
 #Queue Common Methods.
 #maxsize : allow insert number.
-#          if maxsize <= 0, can insert in queue infinity unless allowed memory.
+#          if maxsize <= 0, can insert infinity in queue unless allowed memory.
 q = Queue(maxsize=10)
 print(":: que check methods ::")
 print(":: size:" + str(q.qsize()))
@@ -27,7 +27,7 @@ print("")
 
 #insert over maxsize
 try:
-    #if timeout is None, freeze at line that over maxsize...
+    #if timeout is not None, freeze at line that over maxsize...
     #And Throw Full Exception.
     #by the way, scale of timeout is second.
     q.put(11, block=True, timeout=1)
