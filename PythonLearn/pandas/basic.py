@@ -12,19 +12,17 @@
 #    複数のデータセットを扱う必要がある
 #という場合には、非常に重宝します。
 
-#import pandas
 import pandas as pd
-#import matplotlib and wrapper 
 import seaborn as sns
 import matplotlib.pyplot as plt
 
 #read_csv
 fpath = '/home/puppy/Downloads/kaggle/Titanic/'
 df = pd.read_csv(fpath + '/gender_submission.csv',index_col=0)
-#other pandas can read bellow.
+#other pandas can read below.
 #clipboard, google bigquery, excel (can other spreadsheet?), html, json, sql ,etc...
 
-#convert  from python's list to Dataframe
+#convert from python's list to Dataframe
 import pandas as pd
 from sklearn.datasets import load_boston
 boston = load_boston()

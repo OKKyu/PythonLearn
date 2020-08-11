@@ -28,6 +28,8 @@ class TestSum(unittest.TestCase):
     def test1(self):
         '''
           step four: Please write test case in original method.
+          caution: Name of methods needs to start "test" chars.
+                   example: testCase1, test1, testAbnormal001.
         '''
         self.assertEqual(sum_two_num(1,2),3)
         self.assertEqual(sum_two_num(4,2),6)
