@@ -39,7 +39,7 @@ try:
     #if keyword args block=False, non locked, and timeout parameter is ignored.
     #And Throw Full Exception.
     q.put(11, block=False, timeout=10)
-    #bellow methods is equal that put(item, False) .
+    #below methods is equal that put(item, False) .
     q.put_nowait(11)
 except Full as full:
     print(traceback.format_exc())
@@ -56,7 +56,7 @@ print(":: full :" + str(q.full()))
 print("")
 
 
-#other kinds of queue is bellow.
+#other kinds of queue is below.
 
 #LifoQueue
 #Queue is FIFO , but LifoQueue is LIFO

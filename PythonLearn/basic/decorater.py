@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 
 #decorator is simply description that wrapping function with other function.
-#bellow 2 code is same.
+#below 2 code is same.
 
 
 #before, define wrapping function

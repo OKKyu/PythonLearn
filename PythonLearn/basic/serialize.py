@@ -1,6 +1,6 @@
 #! python3
 # -*- coding:utf-8 -*-
-#This contents by bellow site
+#This contents by below site
 #http://dragstar.hatenablog.com/entry/2017/12/26/153214
 
 import pickle

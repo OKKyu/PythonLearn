@@ -1,6 +1,6 @@
 #! python3
 # -*- coding:utf-8 -*-
-#This contents by bellow site
+#This contents by below site
 #https://qiita.com/koara-local/items/6a98298d793f22cf2e36
 #ショック！ ImageGrabはwinもしくはmacしか使用できない、という例外がスローされて終了。
 

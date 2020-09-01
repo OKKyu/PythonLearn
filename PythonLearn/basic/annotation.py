@@ -4,7 +4,7 @@
 '''
 
 # function annotation
-#  after args identifire (this case is x,y) , semicolon and expression string .
-#  It is return annotation that writed code "-> 'description-return'" 
+#  Type annotation is after args identifire (this case is x,y) , semicolon and expression string .
+#  Return annotation is writed code that "-> 'description-return'" 
 def func_annotations_default(x: 'description-x', y: 'description-y' = 3) -> 'description-return':
     return x * y

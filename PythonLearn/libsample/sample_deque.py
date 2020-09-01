@@ -41,7 +41,7 @@ print("1's first index is :" + str(deq.index(1)))
 try:
   print("3 index in range 0~2 :" + str(deq.index(3, 0, 2)))
 except ValueError as ve:
-  print("if throws ValueError Exception, output message bellow.. ")
+  print("if throws ValueError Exception, output message below.. ")
   print(" X is not in deque")
   print(ve)
 print("")

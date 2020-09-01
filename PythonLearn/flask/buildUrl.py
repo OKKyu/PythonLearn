@@ -1,5 +1,5 @@
 # coding: utf-8
-# flask can run that server daemon. please run from console bellow
+# flask can run that server daemon. please run from console below
 # FLASK_APP=minimumset.py FLASK_ENV=development flask run
 from flask import Flask, url_for
 app = Flask(__name__)

@@ -58,10 +58,10 @@ if __name__ == "__main__":
     
 '''
 notes:
- if run commandline is bellow:
+ if run commandline is below:
     python -m unittest sample_unittest.py
     
- if you want to only one testcase, bellow:
+ if you want to only one testcase, below:
     python -m unittest sample_unittest.test1
 
  
