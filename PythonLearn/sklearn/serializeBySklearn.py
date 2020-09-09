@@ -17,7 +17,7 @@ clf.fit(digits.data, digits.target)
 pre1 = clf.predict(digits.data)
 
 #save learning instance to serialze object
-savePath = '/home/puppy/pic/'
+savePath = './'
 fname = 'test.joblib'
 
 # joblibを使ってオブジェクトをダンプ
