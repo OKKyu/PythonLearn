@@ -36,7 +36,7 @@ print("")
 
 #Method of save file.
 #Pandas can save data in Dataframes as file.
-#caution: excel saving dpends on not only pandas but also openlyxl, odf, pyexcel-ods.
+#caution: excel saving dpends on not only pandas but also openlyxl, odf, pyexcel-ods packages.
 domain_list.to_csv('./domain_list.csv')
 domain_list.to_excel('./domain_list.xlsx')
 domain_list.to_excel('./domain_list.ods')

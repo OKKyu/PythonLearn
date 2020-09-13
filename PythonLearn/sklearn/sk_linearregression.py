@@ -37,11 +37,7 @@ lr.fit(x_train, y_train)
 y_pred = lr.predict(x_test)
 
 #結果を表示
-#クラス分類とは異なり予測値が返却されるので、y_pred == y_test になることはほどんどない。
-error = np.abs((y_test - y_pred))
-
 print("test data num:" + str(len(x_test)))
-print("error per is :" + "{:.2f}".format(sum(error)))
 
 #プロット
 fig, ax = plt.subplots()
@@ -49,6 +45,12 @@ ax.scatter(y_pred, y_test, marker='o', label='plot')
 ax.set_xlabel("predict value")
 ax.set_ylabel("actual value")
 ax.legend(loc="best")
-
 plt.show()
+
+#性能評価
+#クラス分類とは異なり予測値が返却されるので、y_pred == y_test になることはほどんどない。
+
+error = np.sum(np.abs(y_test - y_pred))
+print('Mean absolute error:' + str(error))
+
 
