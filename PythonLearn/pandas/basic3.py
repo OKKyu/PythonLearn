@@ -58,7 +58,7 @@ df = df.drop("日付", axis=1)
 print(df.head(4))
 print("")
 
-#Insert maintenanced data column
+#Insert new data column with calculated values.
 df.loc[:, '歩数／カロリー'] = df.loc[:,'歩数'] / df.loc[:,'摂取カロリー']
 print(df.loc[:, '歩数／カロリー'].head(4))
 print("")
@@ -83,3 +83,6 @@ print(df_moved.head(6))
 
 #save pickle.
 df_moved.to_pickle('201704health.pickle')
+
+#load dataframe from pickle file.
+#df_loaded = pd.read_pickle('201704health.pickle')

@@ -12,7 +12,7 @@ import pandas as pd
 
 # Series Object: It's one dimension object.
 # It's not ndarray, list, and other sequense object.
-print("determination Series")
+print("make instance of Series")
 ser = pd.Series([10,20,30,40])
 print(ser)
 ser = pd.Series(np.arange(1,10,2))
@@ -39,9 +39,9 @@ print("")
 # create Dataframe
 df = pd.DataFrame(np.arange(100).reshape((25,4)))
 print("new dataframe")
-print("df.head() is view that top of 10 rows.")
+print("df.head() is display that top of 10 rows.")
 print(df.head(10))
-print("df.tail() is view that last of 10 rows.")
+print("df.tail() is display that last of 10 rows.")
 print(df.tail(10))
 print("dataframe also have shape attribute.")
 print("shape :" + str(df.shape))

@@ -24,7 +24,7 @@ print("")
 
 #Method of HTML Reading
 #If web page has table elements, pandas is reading data from table elements.
-#There are readed as list of Dataframe ( one dataframe is one table ).
+#These data in table elements are readed as list of Dataframe ( one dataframe is one table ).
 # question: If web page has no table, pandas can't read data?
 #caution: html reading dpends on not only pandas but also html5lib.
 a = urllib.parse.quote('トップレベルドメイン一覧', encoding='utf-8')
