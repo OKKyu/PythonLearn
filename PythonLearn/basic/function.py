@@ -72,7 +72,8 @@ def f(a, L=None):
 def parrot(voltage, state):
 	print("voldage:" + voltage)
 	print("state:" + state)
-	
+
+parrot("1000", "stable")	
 parrot(voltage="1000", state="stable")
 
 #ただし以下はエラーとなる。
@@ -115,7 +116,7 @@ def write_multiple_items4(separator, *args, **words):
     for key, val in words.items():
         print(key + separator + val)
 #
-write_multiple_items4("/", "alan", "kate", "ling")
+write_multiple_items4("/", "alan", "kate", "ling", bb="bbb")
 
 #引数の宣言について
 #以下ルールを設けていればトラブルは減らせると思う。

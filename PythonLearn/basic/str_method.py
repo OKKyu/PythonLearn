@@ -31,7 +31,7 @@ print('12５三:' + str('12５三'.isdigit()))
 #半角・全角のアラビア数字、特殊数字、漢数字が真
 print('12:' + str('12'.isnumeric()))
 print('12５:' + str('12５'.isnumeric()))
-print('12５三:' + str('12５三'.isnumeric()))
+print('12５三零:' + str('12５三零'.isnumeric()) + "こんな難しい漢数字でも判定できている")
 
 #judge str have only alpha or number 
 print(string.isalnum())
@@ -48,6 +48,8 @@ print('あいうえ,おかき'.split(','))
 #join
 #splitの逆でjoin関数というのがある。指定した区切り文字で文字列を連結する。リストの要素を１個の文字列に連結したいときに使える。
 print('-'.join(['あいうえ','おかき']))
+#空文字列を指定すると文字連結になる。いちいちforで回して + 演算子で結合しないでよい。
+print(''.join(['あいうえ','おかき']))
 
 #文字列置換、replaceもある
 print('あいうえ-おかき'.replace('-',''))
