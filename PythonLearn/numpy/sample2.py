@@ -1,7 +1,7 @@
 #! python3
 # -*- coding: utf-8 -*-
 '''
-  numpyによるデータ生成の方法
+  numpyによるデータ（配列）を生成する方法
 '''
 import numpy as np
 
@@ -72,7 +72,9 @@ print("concatenate")
 l = np.arange(5)
 n = np.arange(10, 20, 2)
 o = [0.1, 0.3, 0.4]
-print(np.concatenate([l, n, o]))
+p = np.concatenate([l, n, o])
+print(p)
+print(p.dtype)
 print("------\n")
 
 #hstack,vstack
@@ -87,5 +89,36 @@ print(np.vstack([l, o]))
 print("------\n")
 
 #行列のような内積を出す場合はdot()を使う。
-#print(np.dot(a,b))
-#print("------\n")
+a = np.array([1, 3, 4])
+b = np.array([2, 2, 1])
+print(np.dot(a,b))
+print("------\n")
+
+#同一値で初期化されたndarrayを生成する方法
+#zero埋めされた配列の生成 0:false の配列を生成するのに使える。
+z = np.zeros((2,4))
+print(z)
+print("------\n")
+#1埋めされた配列の生成  1:true の配列として生成するのに使える。
+z = np.ones((2,4))
+print(z)
+print("------\n")
+#指定値で埋めた配列の生成
+z = np.full((5,2), 99 ,dtype=np.int16)
+print(z)
+print("------\n")
+
+#転地 行と列を入れ替える
+t = np.array([[1, 2, 3], [4, 5, 6]])
+print(t.T)
+print("------\n")
+
+#次元追加
+d = np.arange(1,10)
+print("add dimention with row direction.")
+print(d[np.newaxis, :])
+print(d[np.newaxis, :].shape)
+print("add dimention with column direction.")
+print(d[:, np.newaxis])
+print(d[:, np.newaxis].shape)
+print("------\n")
