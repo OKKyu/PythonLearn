@@ -1,0 +1,27 @@
+・How to Installing PyAutoGUI
+
+You can install by use to pip command.
+1)Before installing PyAutoGUI, You have to install other library that is required to PyAutoGUI.
+  pip install python3-xlib
+  apt-get instal scrot python3-tk python3-dev
+2)After dependency library was installed, You shoud install PyAutoGUI.
+  pip install pyautogui
+  
+・hotkey reference
+ 全て小文字で表記する。
+ enter
+ esc
+ shiftleft shiftright
+ altleft   altright
+ ctrlleft  ctrlright
+ tab
+ backspace delete
+ pageup pagedown
+ home end
+ up down left right
+ volumemute volumedown volumeup
+ pause
+ capslock numlock scrolllock
+ printscreen
+ insert
+ winleft winright

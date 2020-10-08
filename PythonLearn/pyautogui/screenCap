@@ -3,9 +3,9 @@
 #This contents by below site
 #https://ensekitt.hatenablog.com/entry/2018/01/16/200000
 
-#need packages
+#required dependency packages
 #sudo apt install python-xlib scrot
-#pip install Xlib
+#pip install xlib
 #pip install pyautogui
 
 import pyautogui
