@@ -8,7 +8,7 @@ print('-- simply copy of one dimension list')
 a = [1,2,3]
 b = copy.copy(a)
 print(a is b)
-#this also shallow copy
+#this is also shallow copy
 b = a[:]
 b = list(a)
 b[1] = a[1]

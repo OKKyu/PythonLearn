@@ -70,3 +70,18 @@ if True:
 #補足：条件式が偽となる値
 #None, False, 整数のゼロ(0, 0.0, 0.0j), 空文字列, 空リスト,タプル,辞書
 #上記以外は真
+
+#pythonにはcase文がない。if文が面倒な場合、dictのkeyに条件文字、valに関数を入れることで擬似的にcase文が作れる。
+#ただしdefault句の代わりがない。以下Noneの代わりにdefaultの関数を入れるとよいか。
+
+#関数の定義
+def bb():
+   print("BB")
+#関数をvalueとして代入する。lambdaも関数なのでセットできる。
+case = { "aa": lambda x : print(x),
+         "bb":bb
+       }
+#aaの場合の処理を実行する。ただgetしただけでは関数が返却されるだけなので、関数を実行するために()を書く。
+case.get("aa")(12321)
+case.get("bb")()
+case.get("cc", None)

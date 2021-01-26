@@ -59,3 +59,14 @@ dict1 = {'a':12, 'ee':300}
 print('del dict1 a and ee')
 del dict1['a'], dict1['ee']
 print(dict1)
+
+#辞書内包表記
+#リスト内包表記の辞書版。
+# 1) zipでkeyとvalueを結合する方法
+l1 = ["a", "b", "c"]
+l2 = [ i for i in range(3) ]
+dict2 = { k:v for k,v in zip(l1, l2) } 
+print(dict2)
+# 2) zipなし
+dict2 = { str(i):i for i in range(0, 8, 2) } 
+print(dict2)

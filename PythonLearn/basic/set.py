@@ -59,3 +59,10 @@ print(set1)
 print('pop 先頭データを１つ取り出してsetから削除する')
 print(set1.pop())
 print(set1)
+
+print('セット内包表記')
+print('辞書内包表記と似ているが、コロンを抜くとセット内包表記となる。')
+set1 = { i for i in range(3, 30, 3) }
+print(set1)
+set1.add(3)
+print(set1)

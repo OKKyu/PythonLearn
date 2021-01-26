@@ -27,5 +27,6 @@ print('from str to unicode, base64')
 print(a)
 
 a = base64.b64decode(a)
+a = a.decode('utf-8')
 print('from base64 to unicode, str')
-print(a.decode('utf-8'))
+print(a)

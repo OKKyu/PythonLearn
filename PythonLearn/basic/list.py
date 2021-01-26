@@ -48,8 +48,8 @@ listlist = [[1,3,5],['a','b','c']]
 print("[0][1] :" + str(listlist[0][1]))
 print("[1][2] :" + str(listlist[1][2]))
 
-#これは面白い。
-#for文でリスト作成が可能。
+#これは面白い。for文でリスト作成が可能。
+#リスト内包表記という。リスト [ ] の中にfor文を書くことで、for文の出力した要素をリストの要素にする。
 # i * 2 を配列要素として返却する。これをrange(10)で10回繰り返す。
 numbers = [i * 2 for i in range(10)]
 print(numbers)
