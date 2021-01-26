@@ -20,7 +20,6 @@ dfTest = dfTest.fillna(0)
 dfTestData = dfTest.drop(['Pclass','Name','Sex','Parch','Ticket','Fare','Cabin','Embarked'],axis=1)
 
 Y_pred = knn.predict(dfTestData)
-print(len(Y_pred))
 
 dfAnswer = pd.read_csv(base_dir + 'gender_submission.csv', index_col=0)
 dfAnswer = dfAnswer.fillna(0)
@@ -28,3 +27,4 @@ dfAnswer = dfAnswer.fillna(0)
 # 精度確認用のライブラリの実行
 print(metrics.accuracy_score(dfAnswer, Y_pred))    # 予測精度計測
 print(metrics.classification_report(dfAnswer, Y_pred))
+print(metrics.roc_auc_score(dfAnswer, Y_pred))
