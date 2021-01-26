@@ -24,6 +24,6 @@ ax.pie(x, labels=labels, startangle=90, counterclock=False, autopct='%1.2f%%', s
 ax.axis('equal')
 
 #その他
-ax.set_title('amount of consumption that meat', family='fantasy', size=10, weight='bold')
+ax.set_title('amount of consumption of meat', family='fantasy', size=10, weight='bold')
 
 plt.show()
