@@ -11,7 +11,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.datasets import load_iris
 
 #sklearn.datasetsからトイデータを読み込む
-# 読み込まれてたデータの構造はこうなっている。
+# 読み込まれたデータの構造はこうなっている。
 #  data:   説明変数となるデータ。    １次元目はデータ数、２次元目は１サンプルが持つ全ての説明変数。
 #  target: 目的変数となる整数ラベル。おかげで一からlabel encodingしないでよい。dataのインデックスに対応している。
 #  target_names:目的変数となるラベル。
