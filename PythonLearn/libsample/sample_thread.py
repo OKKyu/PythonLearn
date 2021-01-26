@@ -7,7 +7,7 @@ import threading
 
 def f():
     i=1
-    while True:
+    for i in range(1, 6):
         print(i)
         i = i + 1
         time.sleep(1)
