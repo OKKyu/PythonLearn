@@ -47,6 +47,16 @@ print(np.median(l))
 #print(np.mod(l))
 print("--------")
 
+#積
+print("prod")
+print(np.prod(l))
+print("--------")
+#幾何平均
+print("mean prod")
+print(np.prod(l) ** (1/len(l)))
+print("--------")
+
+
 #四捨五入、切り捨て、切り上げ
 print("round, trunc, floor, ceil")
 # 配列 [-1.7, -1.5, -0.2, 0.2, 1.5, 1.7, 2.0] を作成
@@ -67,4 +77,10 @@ print("--------")
 print("max, min")
 print(np.max(a))
 print(np.min(a))
+print("--------")
+
+#平方根
+print("sqrt")
+print("before " + str([1, 4, 9, 16]))
+print("sqrt " + str(np.sqrt([1, 4, 9, 16])))
 print("--------")
