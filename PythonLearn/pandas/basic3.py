@@ -6,11 +6,11 @@ import pandas as pd
 
 '''
   This source code is a sample of using pandas library.
-  Data maintenance about DataFrame.
+  Data maintenance with DataFrame.
 '''
 
 df = pd.read_excel('201704health.xlsx')
-print('check that data is reading successfully')
+print('data is readed successfully')
 print(df.head(4))
 print("")
 
@@ -36,13 +36,13 @@ print(df)
 print(str(df.dtypes))
 print("")
 
-#Change column type.
+#How to change column type that already have been created.
 df.loc[:, '摂取カロリー'] = df.loc[:,'摂取カロリー'].astype(np.float32)
 print('change column type from int to float32.')
 print(df['摂取カロリー'].head(4))
 print("")
 
-#setting index column.
+#setting a column as index.
 df = df.set_index("date")
 print('set index column.')
 print(df.head(4))
@@ -53,17 +53,17 @@ print('sort data, 歩数、カロリー')
 print(df.sort_values(by=['歩数', '摂取カロリー'], ascending=False).head(10))
 print("")
 
-#remove unneccesary column
+#remove unnecessary column
 df = df.drop("日付", axis=1)
 print(df.head(4))
 print("")
 
-#Insert new data column with calculated values.
+#Inserting new data column that have calculated values.
 df.loc[:, '歩数／カロリー'] = df.loc[:,'歩数'] / df.loc[:,'摂取カロリー']
 print(df.loc[:, '歩数／カロリー'].head(4))
 print("")
 
-#apply by function.
+#To define callback function and give it to apply method.
 def exercise_judge(ex):
     if ex <= 3.0:
         return "Low"

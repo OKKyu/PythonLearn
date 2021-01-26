@@ -6,7 +6,7 @@ import pandas as pd
 
 '''
   This source code is a sample of using pandas.
-  absent data complement
+  complement of absent data.
 '''
 
 df = pd.read_csv('./201705health.csv', encoding='utf-8', index_col='日付', parse_dates=True)
@@ -18,20 +18,20 @@ print('drop na rows')
 print(df.dropna())
 print('')
 
-print('complement fixed value')
+print('complement by fixed value')
 print(df.fillna(0))
 print('')
 
-print('complement just before value')
+print('complement by value just before it.')
 print(df.fillna(method='ffill'))
 print('')
 
-print('complement mean value')
+print('complement with mean value')
 print(' This mean value is calculated by only non-absented datas.')
 print(df.fillna(df.mean()))
 print('')
 
-print('complement median value')
+print('complement with median value')
 print(df.fillna(df.median()))
 print('')
 
