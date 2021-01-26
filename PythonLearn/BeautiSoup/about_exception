@@ -1,0 +1,19 @@
+パース前にはrequestsライブラリを用いてwebページを取得するが、その際に例外が発生することがある。
+その例外について備忘録として残しておく。
+
+InvalidSchema
+   URLのプロトコルが誤っていると出る。
+　　requests.exceptions.InvalidSchema: No connection adapters were found for <URL>
+
+MaxRetryError
+  回線が繋がらない、そもそも指定したアドレスがない場合に以下のようなエラーとなり発生する。
+　最大リトライ数の分だけリクエストを投げて後に発生するので、このように出る。
+  　requestsの内部で利用されているurllibライブラリで発生する。
+　  　urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='www.data.jmab.go.jp', 
+    　port=80): Max retries exceeded with url: <URL>
+  　MaxRetryErrorを受け取ったrequests側ではConnectionErrorとして出力される。
+   　requests.exceptions.ConnectionError: HTTPConnectionPool(host='www.data.jmab.go.jp', port=80):
+
+　まずは指定したURLが間違っていないか確認する。間違っていない場合、そもそも対象ホストが停止していないか確認する。
+　ホストも起動している場合は、回線の不調を疑う。
+
