@@ -3,8 +3,9 @@
 #this code's owner is google.
 #https://cloud.google.com/speech-to-text/docs/sync-recognize?hl=ja#speech-sync-recognize-python
 
-from google.cloud import speech_v1
-from google.cloud.speech_v1 import enums
+from google.cloud import speech
+from google.cloud.speech import RecognitionConfig
+from google.cloud.speech_v1p1beta1 import RecognitionConfig as beta1Config #for MP3.
 import io
 import sys, os
 from pathlib import Path
@@ -24,7 +25,7 @@ def sample_recognize(local_file_path):
       local_file_path Path to local audio file, e.g. /path/audio.wav
     """
 
-    client = speech_v1.SpeechClient()
+    client = speech.SpeechClient()
 
     # local_file_path = 'resources/brooklyn_bridge.raw'
 
@@ -41,22 +42,34 @@ def sample_recognize(local_file_path):
 
     # Encoding of audio data sent. This sample sets this explicitly.
     # This field is optional for FLAC and WAV audio formats.
-    encoding = enums.RecognitionConfig.AudioEncoding.LINEAR16
+    #encoding = RecognitionConfig.AudioEncoding.LINEAR16
+    encoding = beta1Config.AudioEncoding.MP3
     config = {
         "language_code": language_code,
         "sample_rate_hertz": sample_rate_hertz,
         "encoding": encoding,
         "max_alternatives": max_alternatives,
+        "enable_word_time_offsets":True
     }
     with io.open(local_file_path, "rb") as f:
         content = f.read()
     audio = {"content": content}
 
-    response = client.recognize(config, audio)
+    response = client.recognize(config=config, audio=audio)
     for result in response.results:
         # First alternative is the most probable result
         alternative = result.alternatives[0]
         print(u"Transcript: {}".format(alternative.transcript))
-
+        print(u"Confidence: {}".format(alternative.confidence))
+        
+        for word_info in alternative.words:
+            word = word_info.word
+            start_time = word_info.start_time
+            end_time = word_info.end_time
+            
+            print(f"Word: {word}, start_time: {start_time.total_seconds()}, end_time: {end_time.total_seconds()}")
+            
+        print("")
+        
 
 sample_recognize(sys.argv[1])
