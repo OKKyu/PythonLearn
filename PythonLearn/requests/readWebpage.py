@@ -9,7 +9,7 @@ import requests
 #r = requests.get('https://gihyo.jp/lifestyle/clip/01/everyday-cat',params={'aa':1,'bb':2})
 r = requests.get('https://gihyo.jp/lifestyle/clip/01/everyday-cat')
 if r.status_code == 200:
-	#取得結果をテキストとしてスライスする方法
+	#HTMLデータ部はtextプロパティの中に格納されている。長いので先頭50文字のみ表示している。
 	print(r.text[:50])
 	#ヘッダーの取得。headers辞書に登録されている。
 	#urllibのgetheaderと違いキーはlower caseとなっている。
@@ -53,3 +53,11 @@ s = requests.Session()
 s.headers.update({'user-agent':'my-agent-is-intelleon'})
 s.auth = ('User ID','User Password')
 s.get('http://httpbin.org/get', params=payload)
+
+
+#わざわざstatus_codeで分岐せずとも、200 or not で例外を発生させる方法もある。
+try:
+	r = requests.get('https://gihyo.jp/lifestyle/clip/01/everyday-cat')
+	r.raise_for_status()
+except Exception as ex:
+	print(r.text)
