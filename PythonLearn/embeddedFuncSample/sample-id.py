@@ -12,7 +12,7 @@ b = 4
 print(str(a) + ":" + str(b))
 print(id(a))
 print(id(b))
-print("When b is setted new value that difference with a, b is setted also a new memory address")
+print("When b is setted new value other with a, b is setted also a new memory address")
 print("")
 
 l1 = [1,2,3]
