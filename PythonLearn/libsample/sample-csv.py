@@ -25,3 +25,10 @@ with open('top_cities_2.csv','w', encoding='utf-8') as f:
             { 'rank':2, 'city':'aab', 'population': 0 },
             { 'rank':3, 'city':'aac', 'population': 1232 }
         ])
+
+
+#csv_file = open("./TEST_STOCK.csv", "r", encoding="ms932", errors="", newline="" )
+#リスト形式
+#f = csv.reader(csv_file, delimiter=",", doublequote=True, lineterminator="\r\n", quotechar='"', skipinitialspace=True)
+#辞書形式
+#f = csv.DictReader(csv_file, delimiter=",", doublequote=True, lineterminator="\r\n", quotechar='"', skipinitialspace=True)
