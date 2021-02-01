@@ -15,6 +15,8 @@ pyautogui.typewrite(["a", "b", "c", "\n"], 0.25)
 pyautogui.typewrite([ "space" for i in range(10) ])
 pyautogui.sleep(1)
 pyautogui.typewrite(["enter"])
+#other,write
+#pyautogui.write(["enter"])
 
 #shortcut key
 #If you use by keyDown and keyUp, source code became to boared...
@@ -22,6 +24,8 @@ pyautogui.keyDown("ctrl")
 pyautogui.keyDown("c")
 pyautogui.keyUp("c")
 pyautogui.keyUp("ctrl")
+#other, press method.
+#pyautogui.press("enter")
 
 #If you use with hotKey, you can write code very simply.
 pyautogui.hotkey('ctrl', 'a')
