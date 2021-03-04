@@ -1,0 +1,34 @@
+用語
+ 本家サイトの用語がよくわからなかったので整理しておく。
+ entry: 入力項目を指す模様。
+ widget:Javaで言うコンポーネント？
+ label:文言ラベルを指す。
+ 
+Frameについて
+ Javaのgridlayoutを貼ったPanelのようなもの。
+
+Entryについて
+ Entryとは入力フォームを指す。htmlの<input type="textbox"/>に相当する。
+ 事前にStringVar()やらIntVar()やらのインスタンスを作り、textvariableにはめて型を設定する。
+   feet = StringVar() 
+   feet_entry = ttk.Entry(frame, width=12, textvariable=feet)
+ gridで位置を設定する。
+ columnとrowはゼロオリジンではなく1オリジン。
+   feet_entry.grid(column=2, row=1, sticky=(W, E))
+  
+Labelについて
+  固定ラベルの場合、以下１行で書ける。text引数に直接文言を書けばよい。
+    ttk.Label(frame, text='feet').grid(column=3, row=1, sticky=W)
+    
+  可変ラベルの場合は、Entryと同様textvariableを設定する。
+    meters = StringVar()
+    ttk.Label(frame, textvariable=meters).grid(column=2, row=2, sticky=(W, E))
+
+Buttonについて
+  Buttonもラベルと同様に設定できる。
+    ttk.Button(frame, text='Calculate', command=calculate).grid(column=3, row=3, sticky=W)
+    
+bind
+  メインアプリのbindメソッドでキーボード入力と関数を紐付けられる。
+    root = Tk() 
+    root.bind("<Return>", command)
