@@ -1,0 +1,6 @@
+pyocrはtesseractというOCRツールをラップしている。
+以下もDLが必要。
+apt-get install tesseract-ocr
+apt-get install tesseract-ocr-jpn (日本語用モデル)
+
+その後pipでpyocrを入れればよい。
