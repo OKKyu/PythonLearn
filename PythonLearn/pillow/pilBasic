@@ -27,6 +27,9 @@ new_im = im.convert('L').rotate(90).filter(ImageFilter.GaussianBlur())
 #OSデフォルトのソフトで画像を表示。
 new_im.show()
 
+#リサイズ。第一引数にw,hのタプルを入れる。第二引数はオプション。調べること。
+new_im = new_im.resize((64, 64))
+
 #save picture
 new_im.save('/home/puppy/pic/pillowBasic001.jpg', quality=95)
 

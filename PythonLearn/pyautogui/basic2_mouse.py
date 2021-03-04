@@ -56,3 +56,6 @@ pyautogui.dragRel(30, 30, duration=1)
 #pyautogui can scroll with mousewheel.
 for i in range(10):
     pyautogui.scroll(1)
+
+for i in range(10):
+    pyautogui.scroll(-1)

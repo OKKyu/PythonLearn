@@ -14,3 +14,6 @@ for i in range(10):
     s = pyautogui.screenshot()
     s.save('filename_{0:04d}.png'.format(i))
     time.sleep(3)
+
+# 左上のx座標=100, 左上のy座標=200 の位置から幅300, 高さ=400 の範囲を撮っています。
+s = pyautogui.screenshot(region=(100, 200, 300, 400))

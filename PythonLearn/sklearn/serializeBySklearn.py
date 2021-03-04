@@ -3,7 +3,8 @@
 
 from sklearn.datasets import load_digits
 from sklearn.neural_network import MLPClassifier
-from sklearn.externals import joblib
+#from sklearn.externals import joblib
+import joblib
 
 #load training data
 digits = load_digits()

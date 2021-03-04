@@ -5,13 +5,14 @@ import sys
 import time
 import threading
 
-def f():
+def f(a, b):
+    print(str(a) + "  " + str(b))
     i=1
     for i in range(1, 6):
         print(i)
         i = i + 1
         time.sleep(1)
-thObj = threading.Thread(target=f)
+thObj = threading.Thread(target=f, args=(123,456))
 thObj.start()
 #the above code is same as below.. but python2.
 #  import thread
