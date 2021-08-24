@@ -67,3 +67,9 @@ print(string.center(20,'*'))
 print('***guten*morgen!***'.strip('*'))
 print('***guten*morgen!***'.lstrip('*'))
 print('***guten*morgen!***'.rstrip('*'))
+
+#count up particular chars.
+print('***guten*morgen!***'.count('e'))
+print('***guten*morgen!***\n'.count('\n'))
+print('***guten*morgen!***'.count('gu'))
+print('***guten*morgen!***'.count('***'))
