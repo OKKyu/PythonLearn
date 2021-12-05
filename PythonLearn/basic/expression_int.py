@@ -1,5 +1,9 @@
 #! python3
 # -*- coding:utf-8 -*-
+'''
+  expression_int.py
+    How to express integer value, literal, and convert.
+'''
 
 bin_num = 0b10
 oct_num = 0o10
@@ -22,4 +26,3 @@ print(type(bin(i)))
 print(type(oct(i)))
 print(type(hex(i)))
 print("-----")
-

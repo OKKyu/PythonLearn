@@ -1,11 +1,9 @@
 #!/bin/sh
 # pip install pyflakes
-# pip install pep8 x
-# pip install pycodestyle o
+# pip install pycodestyle
 # pip install pylint
 
 # pep8 renamed by pycodestyle.
-# pep8 test_target.py
 # pycodestyle:PEP8のコーディングスタイルとの整合性を確認する
 # 主に改行の仕方やインデント、コメントブロックの付け方など、書式フォーマットに関するチェックが行われる。
 echo " ---- start pycodestyle (old name is pep8) ---- "
@@ -33,10 +31,12 @@ echo " ----- end pyflakes ----- "
 # 
 
 
-# pyflakes:文法エラー（論理エラー）とコーディングスタイルのチェックを行う。
+# pylint:文法エラー（論理エラー）とコーディングスタイルのチェックを行う。
 # pycodestyleとは異なるスタイル基準でチェックする。よってpycodestyleで警告ゼロになってもpylintでは引っかかることはある。
-# docstringの有無チェックなど。また、文法エラーにかかるとスタイルチェックが抑制される。文法エラーを解消するとスタイルチェック
-# が実行されるようである。
+# また、文法エラーにかかるとスタイルチェックが抑制される。文法エラーを解消するとスタイルチェックが実行されるようである。
 echo " ---- start pylint  ---- "
 pylint $1
 echo " ----- end pylint ----- "
+# pylint エラーメッセージの詳細は以下を参照。
+# https://vald-phoenix.github.io/pylint-errors/
+# http://pylint-messages.wikidot.com/start

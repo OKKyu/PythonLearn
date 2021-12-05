@@ -9,4 +9,3 @@ import sys
 
 print("Hello! Symlinks")
 print(sys.path)
-

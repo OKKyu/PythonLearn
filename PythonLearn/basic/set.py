@@ -1,25 +1,28 @@
 #! python3
 # -*- coding: utf-8 -*-
-# setの基本
+'''
+  set.py
+    Basics of set object in python.
+'''
 
 print('Javaのセットと同じく重複値を持たないコレクション。')
-set1 = { 'aa', 'bb'}
+set1 = {'aa', 'bb'}
 print(set1)
 print('add関数で要素を追加する。重複値を入れても追加されない。')
 
 for i in range(3):
-	print('cc追加 ' + str(i + 1) + '回目')
-	set1.add('cc')
+    print('cc追加 ' + str(i + 1) + '回目')
+    set1.add('cc')
 
 print(set1)
 print('ccが１個しかない。実行するとわかるが、登録順序も保証されない。ここ注意。\n')
 
 print('集合の積も取れる。これは便利。以下はset1とset2で重複する値,bbだけが表示される。')
 print('set2 = {\'bb\',\'dd\'}')
-set2 = {'bb','dd'}
+set2 = {'bb', 'dd'}
 print(set1 & set2)
 
-#if you want to create empty set, please use set() method.
+# if you want to create empty set, please use set() method.
 set3 = set()
 
 print('その他集合型の操作')
@@ -43,7 +46,7 @@ print('set1がset2の上位集合（内包している集合）かどうか issu
 print(set1.issuperset(set2))
 print("")
 
-#破壊的メソッド
+# 破壊的メソッド
 print('add')
 set1.add('hh')
 print(set1)
@@ -62,7 +65,7 @@ print(set1)
 
 print('セット内包表記')
 print('辞書内包表記と似ているが、コロンを抜くとセット内包表記となる。')
-set1 = { i for i in range(3, 30, 3) }
+set1 = {i for i in range(3, 30, 3)}
 print(set1)
 set1.add(3)
 print(set1)
