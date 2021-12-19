@@ -1,12 +1,12 @@
 #! python3
 # -*- coding:utf-8 -*-
-#This contents by below site
-#https://ensekitt.hatenablog.com/entry/2018/01/16/200000
+# This contents by below site
+# https://ensekitt.hatenablog.com/entry/2018/01/16/200000
 
-#required dependency packages
-#sudo apt install python-xlib scrot
-#pip install xlib
-#pip install pyautogui
+# required dependency packages
+# sudo apt install python-xlib scrot
+# pip install xlib
+# pip install pyautogui
 
 import pyautogui
 import time
