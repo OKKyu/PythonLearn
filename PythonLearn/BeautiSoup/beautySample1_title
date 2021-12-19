@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 
 r = requests.get('https://gihyo.jp/lifestyle/clip/01/everyday-cat')
 soup = BeautifulSoup(r.content, 'html.parser')
-title = soup.title #タイトルタグの情報を取得
+title = soup.title  # タイトルタグの情報を取得
 print("title:")
 print(title)
 print(title.text)
