@@ -1,5 +1,10 @@
-#! python3
-#-*- encoding:utf-8 -*-
+#!python3
+# -*- encoding:utf-8 -*-
+'''
+  00-embeddedFuncList.py
+    代表的な組み込み関数
+'''
+
 print('代表的な組み込み関数')
 print('len : リスト、ディクショナリ、文字列などの要素数を返却。')
 print('dict :dictオブジェクト生成')
