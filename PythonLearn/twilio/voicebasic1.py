@@ -15,7 +15,7 @@ with open("/root/twilio-auth.json", "rb") as f:
 to_phone = "+81XXYYYYZZZZ"
 message_body = "Hey, Could you recieve this message? \n Year! That\'s good!!"
 
-#If there are command line variables, set it to  
+# If there are command line variables, set it to
 if len(sys.argv) > 1:
     if len(sys.argv[1]) <= 12 and sys.argv[1][1:].isdecimal() == True:
         to_phone = sys.argv[1]
@@ -27,9 +27,9 @@ elif len(sys.argv) > 2:
 
 twilio_cli = Client(os.environ.get("account_SID"), os.environ.get("auth_token"))
 
-#sample1 using demo sample file from twilio web site.
-call = twilio_cli.calls.create(from_=os.environ.get("from_twilio_number"), to=to_phone, \
-                                  url="http://demo.twilio.com/docs/voice.xml" )
+# sample1 using demo sample file from twilio web site.
+call = twilio_cli.calls.create(from_=os.environ.get("from_twilio_number"), to=to_phone,
+                               url="http://demo.twilio.com/docs/voice.xml")
 
 print("------------ start ------------")
 print(call.sid)
@@ -38,11 +38,11 @@ print(call.to)
 print(call.date_created)
 print("-------------------------------")
 
-#debug while sending.
+# debug while sending.
 while True:
     print("------------ sending ------------")
     updated_call = twilio_cli.calls(call.sid).fetch()
-    
+
     if updated_call != None:
         print(updated_call.status)
         print(updated_call.start_time)
