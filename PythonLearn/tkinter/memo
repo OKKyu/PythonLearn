@@ -4,8 +4,31 @@
  widget:Javaで言うコンポーネント？
  label:文言ラベルを指す。
  
+ 
+決まり文句
+ root = Tk()               Tkウィンドウ本体を生成する
+ root.title('bbb')         ウィンドウタイトルを設定する
+ root.geometry('400x120')  縦横サイズを設定する
+ root.mainloop()           実行。JavaやVB.netのshow()のようなメソッド。
+ 
+ttkについて
+ これがTkの各部品を生成するためのいわばファクトリクラス。
+ ttk.Frame,ttk.Label,ttk.Buttonなどのように、各コンポーネント名と同名のメソッドを持っている。
+ それらの第一引数にはコンポーネントをセットしたいウィンドウ本体やFrameを代入する。
+ 第２引数以降は各コンポーネントに必要な設定事項を入れる。
+ また各メソッドは生成したコンポーネント自体を返却する。
+ 
+gridメソッドについて
+ 各コンポーネントはgridメソッドを持っている。これでgridの縦位置、横位置を設定しない限り画面上に
+ 描画されないようである。
+ 
 Frameについて
  Javaのgridlayoutを貼ったPanelのようなもの。
+ packメソッドでレイアウトの調整を行う。
+    expand
+    fill
+    padx,pady
+    side
 
 Entryについて
  Entryとは入力フォームを指す。htmlの<input type="textbox"/>に相当する。
@@ -32,3 +55,6 @@ bind
   メインアプリのbindメソッドでキーボード入力と関数を紐付けられる。
     root = Tk() 
     root.bind("<Return>", command)
+    
+    
+パターン２ tk.Frameを継承したクラスを作る方法
