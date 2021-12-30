@@ -9,9 +9,6 @@
 '''
 from requests_html import HTMLSession
 from bs4 import BeautifulSoup
-from PIL import Image
-import base64
-import io
 
 # Get target page with HTMLSession.
 # You can get target page by below command, but It is not rendered yet.
@@ -29,10 +26,3 @@ soup = BeautifulSoup(s.html.html, "html.parser")
 print("number of images is " + str(len(soup.find_all("img"))))
 
 # This is end. Enjoy your Scraping!
-
-img_str = soup.find_all("img")[12].attrs.get("src")
-dec_byte = base64.b64decode(img_str.split(",")[1])
-img = Image.open(io.BytesIO(dec_byte))
-
-img.save("save.jpg", format="JPEG")
-img.show()

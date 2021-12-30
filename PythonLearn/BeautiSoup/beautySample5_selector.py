@@ -1,6 +1,9 @@
 #! python3
 # -*- coding: utf-8 -*-
-
+'''
+  This Sample Code refer to below website, BeautifulSoup Formal Homepage.
+    http://kondou.com/BS4/#contents-children
+'''
 import requests
 from bs4 import BeautifulSoup
 
