@@ -6,7 +6,7 @@ import os
 import json
 from twilio.rest import Client
 
-with open("/root/twilio-auth.json", "rb") as f:
+with open(sys.argv[1], "rb") as f:
     auth_json = json.loads(f.read())
     os.environ.setdefault("account_SID", auth_json["account_SID"])
     os.environ.setdefault("auth_token", auth_json["auth_token"])
