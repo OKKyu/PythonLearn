@@ -9,8 +9,6 @@ import re
 import cv2
 import MeCab
 
-os.environ.setdefault('GOOGLE_APPLICATION_CREDENTIALS', authJsonFile)
-
 # Imports the Google Cloud client library
 
 

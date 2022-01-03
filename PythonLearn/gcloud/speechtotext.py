@@ -11,8 +11,6 @@ import sys
 import os
 from pathlib import Path
 
-os.environ.setdefault('GOOGLE_APPLICATION_CREDENTIALS', authJsonFile)
-
 def sample_recognize(local_file_path):
 
     if local_file_path == None or Path(local_file_path).exists() == False:

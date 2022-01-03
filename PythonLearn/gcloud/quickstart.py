@@ -11,8 +11,6 @@ import sys
 import io
 import os
 
-os.environ.setdefault('GOOGLE_APPLICATION_CREDENTIALS', authJsonFile)
-
 # Imports the Google Cloud client library
 
 
