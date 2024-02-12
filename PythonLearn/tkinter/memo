@@ -4,6 +4,9 @@
  widget:Javaで言うコンポーネント？
  label:文言ラベルを指す。
  
+本家より以下のほうが説明が丁寧。
+　https://www.pythontutorial.net/tkinter/tkinter-pack/
+
  
 決まり文句
  root = Tk()               Tkウィンドウ本体を生成する
@@ -14,7 +17,7 @@
 ttkについて
  これがTkの各部品を生成するためのいわばファクトリクラス。
  ttk.Frame,ttk.Label,ttk.Buttonなどのように、各コンポーネント名と同名のメソッドを持っている。
- それらの第一引数にはコンポーネントをセットしたいウィンドウ本体やFrameを代入する。
+ それらの第一引数にはコンポーネントをセットしたいウィンドウ本体やFrameを代入する。（親コンポーネント）
  第２引数以降は各コンポーネントに必要な設定事項を入れる。
  また各メソッドは生成したコンポーネント自体を返却する。
  
@@ -28,7 +31,7 @@ Frameについて
     expand
     fill
     padx,pady
-    side
+    side,anchor
 
 Entryについて
  Entryとは入力フォームを指す。htmlの<input type="textbox"/>に相当する。
@@ -49,12 +52,45 @@ Labelについて
 
 Buttonについて
   Buttonもラベルと同様に設定できる。
+  commandにボタン実行時に呼び出すコールバック関数を指定する。
     ttk.Button(frame, text='Calculate', command=calculate).grid(column=3, row=3, sticky=W)
+  コールバック関数が引数を持っている場合はちょっと厄介。引数に固定値しか与えないでいい場合は以下で済む。
+    ttk.Button(frame, text='Calculate', command=calculate(1,3)).grid(column=3, row=3, sticky=W)
+  引数に変数を与えたい場合はラムダ（無名関数）を使う。
+    ttk.Button(frame, text='Calculate', command=lambda a,b: calculate(a,b)).grid(column=3, row=3, sticky=W)
     
 bind
   メインアプリのbindメソッドでキーボード入力と関数を紐付けられる。
     root = Tk() 
     root.bind("<Return>", command)
+  キーボードに限らずイベント全般と対応可能らしい。以下に詳しい。
+    https://www.pythontutorial.net/tkinter/tkinter-event-binding/
     
-    
-パターン２ tk.Frameを継承したクラスを作る方法
+trace
+  StringVar,IntVarなど、Var関連のクラスが持つメソッド。
+  値が変更された時に実行したいコールバック関数を登録する。JavaのValueChangedイベントみたいなもの。
+  例：
+  　tab1.savedir.trace("w", lambda *pargs: frame_left.savedir.set(tab1.savedir.get()))
+  ラムダの*pargsは必須。クラスメソッドには自動で第一引数にselfが設定されるのと同様に、traceでは*argsが自動設定される。
+  ラムダに*pargsを入れないとエラーが発生する。
+  
+  参考：
+    https://stackoverflow.com/questions/29507628/tkinter-variable-to-trace-change-in-other-variable#29508085
+
+Widgetのプロパティの参照方法
+　参照前に widget.update()を呼び出す必要がある。
+　update()を呼び出さないまま widget.winfo_reqwidth() とすると1しか返却されずドハマりした。
+　またwidget自身が持つプロパティ値は "winfo_XXX"という名称のメソッドとなっている。
+
+　サイズについてはもう一点、"winfo_screenXXXX"はwidgetやtkではなくOS本体の設定(screenXXXの場合は解像度にあたる）を
+　指しているようである。
+
+
+packについて
+　probagateしないと勝手に伸縮する。
+　　https://stackoverflow.com/questions/563827/how-to-stop-tkinter-frame-from-shrinking-to-fit-its-contents    
+  sideとanchorは共存できない。
+    Frame内に side(TOP,BOTTOM,LEFT,RIGHT)と anchor(North,South,West,East)を混ぜると配置が制御できない。サブフレームで住み分けるように分割する。
+  probagateの挙動
+　　width,heighを入れない限り収縮される。つまりサイズゼロで消滅する...
+   fill指定すると親に合わせて拡張、するわけでもないらしい...

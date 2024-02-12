@@ -8,70 +8,70 @@
 import sys
 import random
 
-def prac_conv_DecToN(t="b" ,question_num = 3):
+
+def prac_conv_DecToN(t="b"):
     '''
-      t= b, o, x
+      t= b(byte), o(octet), x(hex)
     '''
-    vals = [ random.randint(1, 100) for x in range(question_num) ]
-    correct_num = 0
-    
-    for i in range(question_num):
-        print("convert from " + str(vals[i]) + "(decimal) to " + t + ", what the answer is ?")
-        ans = input()
-        cnv_val = format(vals[i], t)
-        chk = (cnv_val == ans.lower())
-        if chk is True:
-            correct_num += 1
-        
-        print("conv to {}:{}, your ans:{}, {}".format(t, cnv_val, ans, chk))
-        
-    print("right/total::{}/{}".format(correct_num, len(vals)) )
-    print("")
-        
-def prac_conv_NtoDec(t="b" ,question_num = 3):
+    val = random.randint(1, 100)
+
+    print("convert from " + str(val) + "(decimal) to " + t + ", what the answer is ?")
+    ans = input()
+    cnv_val = format(val, t)
+    chk = (cnv_val == ans.lower())
+    print("conv to {}:{}, your ans:{}, {}".format(t, cnv_val, ans, chk))
+
+    return int(chk)
+
+
+def prac_conv_NtoDec(t="b"):
     '''
-      t= b, o, x
+      t= b(byte), o(octet), x(hex)
     '''
-    vals = [ random.randint(1, 100) for x in range(question_num) ]
-    correct_num = 0
-    
-    for i in range(question_num):
-        print("convert from " + format(vals[i], "#" + t) + "(" + t + ")"  + ", what the answer is ?")
-        ans = input()
-        chk = (str(vals[i]) == ans.lower())
-        if chk is True:
-            correct_num += 1
-        
-        print("conv to ten:{}, your ans:{}, {}".format(vals[i], ans, chk))
-        
-    print("right/total::{}/{}".format(correct_num, len(vals)) )
-    print("")
-        
+    val = [random.randint(1, 100)]
+
+    print("convert from " + format(val, "#" + t) + "(" + t + ")" + ", what the answer is ?")
+    ans = input()
+    chk = (str(val) == ans.lower())
+    print("conv to ten:{}, your ans:{}, {}".format(val, ans, chk))
+
+    return int(chk)
+
+
 desc = []
 desc.append(['practice convert from decimal to N base.', prac_conv_DecToN])
 desc.append(['practice convert from N base to decimal.', prac_conv_NtoDec])
 
 if __name__ == "__main__":
+    # Checking number of commandline args.
     if len(sys.argv) < 3:
         print("there are incorrect args, please input args correctly.")
-        print("arg1:practice type arg2:number of producting questions")
+        print("arg1:practice type arg2:number of questions")
+        print("if arg2=0, you can read about arg1\'s explanation.")
         sys.exit(1)
-    
-    if sys.argv[2] == "0":
-        if int(sys.argv[1]) > 0 and int(sys.argv[1]) <= len(desc):
-            print(desc[int(sys.argv[1]) -1][0])
+
+    if sys.argv[2] <= "0":
+        # Explaining about practice type.
+        if int(sys.argv[1]) >= 0 and int(sys.argv[1]) < len(desc):
+            print("practice type " + sys.argv[1] + "  is below...")
+            print(desc[int(sys.argv[1])][0])
         else:
-            print("index out of range. Please input arg1 into between 1 to "+ str(len(desc)))
-        
+            print("index out of range. Please input arg1 into between 1 to " + str(len(desc)))
+            for i in range(len(desc)):
+                print("type " + str(i) + " ->  " + desc[i][0])
     else:
+        question_variations = ["b", "o", "x"]
+
         prac_num = int(sys.argv[2])
-        
-        if sys.argv[1] == "1":
-            prac_conv_DecToN("b", prac_num)
-            prac_conv_DecToN("o", prac_num)
-            prac_conv_DecToN("x", prac_num)
-            
-        if sys.argv[1] == "2":
-            prac_conv_NtoDec("b", prac_num)
-            prac_conv_NtoDec("o", prac_num)
-            prac_conv_NtoDec("x", prac_num)        
+        print("practice try num is : " + str(prac_num))
+
+        print("let\'s start!!")
+
+        correct_num = 0
+        for i in range(prac_num):
+            prac_maker = desc[int(sys.argv[1])][1]
+            correct_num += prac_maker(random.choice(question_variations))
+
+        print("your score is below... Can you get complete? (^~^)")
+        print("right/total  {}/{}".format(correct_num, prac_num))
+        print("")

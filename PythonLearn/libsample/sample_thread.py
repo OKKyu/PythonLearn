@@ -6,7 +6,8 @@ import time
 import threading
 
 
-def f(a, b):
+def f(a, b, comment):
+    print(comment)
     print(str(a) + "  " + str(b))
     i = 1
     for i in range(1, 6):
@@ -15,7 +16,8 @@ def f(a, b):
         time.sleep(1)
 
 
-thObj = threading.Thread(target=f, args=(123, 456))
+thObj = threading.Thread(target=f, args=(123, 456), kwargs={"comment": "f func start!"})
+thObj.daemon = False
 thObj.start()
 # the above code is same as below.. but python2.
 #  import thread
